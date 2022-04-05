@@ -1,8 +1,8 @@
 /* Aside Block */
 
 .aside {
-    width: 100%;
     display: none;
+    width: 100%;
     position: relative;
     align-items: center;
     justify-content: center;
@@ -17,7 +17,7 @@
     margin: 0;
 }
 
-/* Standard and Default Aside - Mobile first */
+/* Standard */
 
 .aside .background {
     overflow: hidden;
@@ -97,9 +97,10 @@
     height: var(--spacing-xl);
     margin-bottom: var(--spacing-m);
     object-fit: cover;
+    object-position: left top;
 }
 
-/* Simple Aside */
+/* Simple */
 
 .aside.simple .foreground.container .text {
     margin-bottom: 80px;
@@ -109,7 +110,7 @@
     display: none;
 }
 
-/* Split Aside mobile */
+/* Split */
 
 .aside.split {
     flex-direction: column;
@@ -162,7 +163,7 @@
     flex-direction: column;
 }
 
-/* Augmented Image Aside */
+/* Augmented Image */
 
 .aside.augmented-image .foreground.container {
     justify-content: center;
