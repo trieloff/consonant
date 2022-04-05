@@ -13,17 +13,9 @@
 /*
  * Z-Pattern - v0.0.1
  */
-import { decorateBlock, loadBlock } from '../../scripts/scripts.js';
 
-function getBlockSize(el) {
-  if (el.classList.contains('medium')) {
-    return 'medium';
-  }else if (el.classList.contains('large')) {
-    return 'large';
-  }else{
-    return 'small';
-  }
-}
+import { decorateBlock, loadBlock } from '../../scripts/scripts.js';
+import { getBlockSize } from "../../scripts/decorate.js";
 
 const init = async (block) => {
     const h1 = block.querySelector('h1');

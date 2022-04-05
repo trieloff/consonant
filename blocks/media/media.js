@@ -11,20 +11,10 @@
  */
 
 /*
- * Z-Pattern - v0.0.1
+ * Media - v0.0.1
  */
 
-import { decorateText, decorateIcons, decorateButtons} from "../../scripts/decorate.js";
-
-function getBlockSize(el) {
-  if (el.classList.contains('medium')) {
-    return 'medium';
-  }else if (el.classList.contains('large')) {
-    return 'large';
-  }else{
-    return 'small';
-  }
-}
+import { decorateText, decorateIcons, decorateButtons, getBlockSize } from "../../scripts/decorate.js";
 
 const init = async (block) => {
     const toggleClassStr = 'media-reverse-mobile';

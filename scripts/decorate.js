@@ -64,3 +64,13 @@ export function decorateText(el, size) {
     }
   }
 }
+
+export function getBlockSize(el) {
+  if (el.classList.contains('medium')) {
+    return 'medium';
+  }else if (el.classList.contains('large')) {
+    return 'large';
+  }else{
+    return 'small';
+  }
+}
