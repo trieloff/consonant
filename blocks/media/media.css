@@ -1,8 +1,11 @@
 
 :root {
-  --grid-container-width-s: 800px;
-  --grid-container-width-m: 1000px;
-  --grid-container-width-l: 1200px;
+  --padding-s: 40px;
+  --padding-m: 48px;
+  --padding-l: 52px;
+  --gap-s: 32px;
+  --gap-m: 40px;
+  --gap-l: 56px;
 }
 
 .media {
@@ -37,23 +40,25 @@
 }
 
 .media > div.media-row {
-    padding: var(--spacing-m) 0;
     max-width: var(--grid-container-width);
     margin: 0 auto;
-
     display: flex;
     align-items: center;
     justify-content: stretch;
-    gap:  var(--spacing-ml);
+    gap:  var(--gap-s);
+    padding: var(--padding-s) 0;
     position: relative;
     flex-direction: column;
 }
 
 .media.medium > div.media-row {
-  gap: 40px;
+  gap: var(--gap-m);
+  padding: var(--padding-m) 0;
 }
+
 .media.large > div.media-row {
-  gap: 56px;
+  gap: var(--gap-l);;
+  padding: var(--padding-l) 0;
 }
 
 .media.large  > div.media-row .text {
@@ -66,7 +71,6 @@
 .media.media-reverse-mobile > div {
     flex-direction: column-reverse;
 }
-
 
 .media > div.media-row > div {
     width: 100%;
@@ -178,14 +182,14 @@
   }
   .media > div.media-row {
     flex-direction: row;
-    max-width: var(--grid-container-width-s);
+    max-width: var(--block-container-width-s);
     margin: 0 var(--spacing-m);
   }
   .media.medium  > div.media-row {
-    max-width: var(--grid-container-width-m);
+    max-width: var(--block-container-width-m);
   }
   .media.large  > div.media-row {
-    max-width: var(--grid-container-width-l);
+    max-width: var(--block-container-width-l);
   }
 
   .media > div.media-row-odd > div:first-child {
@@ -282,7 +286,7 @@
     margin: 0 var(--spacing-m);
   }
   .media.multiple.columns-2 .media-container {
-    max-width: var(--grid-container-width-m);
+    max-width: var(--block-container-width-m);
   }
 }
 @media screen and (min-width: 1200px) {

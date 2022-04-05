@@ -53,6 +53,11 @@
     --grid-container-width: 83.4%;
     --grid-column-width: 7.025%;
 
+    /* Block Conainer */
+    --block-container-width-s: 800px;
+    --block-container-width-m: 1000px;
+    --block-container-width-l: 1200px;
+
     /* Color */
     --hue:213; /*the base hue*/
     --saturation: 84%; /*the base saturation*/

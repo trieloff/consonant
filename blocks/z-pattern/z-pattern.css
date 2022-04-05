@@ -1,10 +1,4 @@
 
-:root {
-  --grid-container-width-s: 800px;
-  --grid-container-width-m: 1000px;
-  --grid-container-width-l: 1200px;
-}
-
 .z-pattern {
     padding: var(--spacing-xxl) 0;
     max-width: var(--grid-container-width);
@@ -18,17 +12,17 @@
 
 .z-pattern > .z-pattern-heading {
     text-align: center;
-    margin: 0 auto var(--spacing-l) auto;
+    margin: 0 auto var(--spacing-s) auto;
 }
 
 @media screen and (min-width: 600px) {
   .z-pattern {
-    max-width: var(--grid-container-width-s);
+    max-width: var(--block-container-width-s);
   }
   .z-pattern.medium {
-    max-width: var(--grid-container-width-m);
+    max-width: var(--block-container-width-m);
   }
   .z-pattern.large {
-    max-width: var(--grid-container-width-l);
+    max-width: var(--block-container-width-l);
   }
 }
