@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-import { decorateContent } from "../../scripts/decorate.js";
+import { decorateContent, decorateIcons } from "../../scripts/decorate.js";
 
 /*
  * Icon Block - v0.0.1
@@ -35,6 +35,7 @@ export default function init(el) {
         const image = item.querySelector(':scope > div:not([class])');
         if (image) image.classList.add('image');
         const headingClass = el.classList.contains('vertical') ? 'heading-S' : 'heading-XL';
-        decorateContent(item, ['icon-img', headingClass, 'body-M'])
+        decorateContent(item, ['product-area', headingClass, 'body-M']);
     }
+    decorateIcons(el, false);
 }
