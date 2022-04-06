@@ -67,12 +67,14 @@ export function decorateText(el, size) {
 
 // decorate text content in block by passing array of classes [ detail, heading, body ]
 export function decorateContent(el, classList) {
-  const headers = el.querySelectorAll('h1, h2, h3, h4, h5, h6');
-  const header = headers[headers.length - 1];
-  header.classList.add(classList[1]);
-  header.nextElementSibling.classList.add(classList[2]);
-  if (header.previousElementSibling) header.previousElementSibling.classList.add(classList[0]);
-  decorateButtons(el);
+  if (el && classList.length == 3) {
+    const headings = el.querySelectorAll('h1, h2, h3, h4, h5, h6');
+    const heading = headings[headings.length - 1];
+    heading.classList.add(classList[1]);
+    heading.nextElementSibling.classList.add(classList[2]);
+    if (heading.previousElementSibling) heading.previousElementSibling.classList.add(classList[0]);
+    decorateButtons(el);
+  }
 }
 
 export function getBlockSize(el) {
