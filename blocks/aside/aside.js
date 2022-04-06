@@ -11,32 +11,10 @@
  */
 
 /*
- * Aside - v0.0.1
- */
+* Aside - v0.0.1
+*/
 
-function decorateButtons(el) {
-    const buttons = el.querySelectorAll('em a, strong a');
-    buttons.forEach((button) => {
-        const parent = button.parentElement;
-        const buttonType = parent.nodeName === 'STRONG' ? 'blue' : 'outline';
-        button.classList.add('con-button', buttonType);
-        parent.insertAdjacentElement('afterend', button);
-        parent.remove();
-    });
-    if (buttons.length > 0) {
-        buttons[0].closest('p').classList.add('action-area');
-    }
-}
-
-function decorateText(el) {
-    const headings = el.querySelectorAll('h1, h2, h3, h4, h5, h6');
-    const heading = headings[headings.length - 1];
-    heading.classList.add('heading-XL');
-    heading.nextElementSibling.classList.add('body-S');
-    if (heading.previousElementSibling) {
-        heading.previousElementSibling.classList.add('detail-M');
-    }
-}
+import { decorateButtons, decorateContent } from "../../scripts/decorate.js";
 
 export default function init(el) {
     const children = el.querySelectorAll(':scope > div');
@@ -59,5 +37,5 @@ export default function init(el) {
     foreground?.querySelector(':scope > div:not([class])')?.classList.add('image');
 
     decorateButtons(text);
-    decorateText(text);
+    decorateContent(text, ['detail-M', 'heading-XL', 'body-S']);
 }
