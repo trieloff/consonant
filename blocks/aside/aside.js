@@ -14,29 +14,12 @@
 * Aside - v0.0.1
 */
 
-import { decorateContent, decorateIcons } from "../../scripts/decorate.js";
+import { decorateButtons, decorateContent, decorateIcons, decorateLayout } from "../../scripts/decorate.js";
 
 export default function init(el) {
     const children = el.querySelectorAll(':scope > div');
-
-    const foreground = children[children.length - 1];
-    foreground.classList.add('foreground', 'container');
-    const text = foreground.querySelector('h1, h2, h3, h4, h5, h6')?.closest('div');
-
-    if (children.length > 1) {
-        const background = children[0];
-        background.classList.add('background');
-
-        if (!background.querySelector(':scope img')) {
-            background.children[0].style.display = 'none';
-            background.setAttribute('style', `background: ${background.textContent}`);
-        }
-    }
-
-    text?.classList.add('text');
-    text?.querySelector(':scope img')?.closest('p')?.classList.add('product-area');
-    foreground?.querySelector(':scope > div:not([class])')?.classList.add('image');
-
-    decorateContent(text, ['detail-M', 'heading-XL', 'body-S']);
+    const content = decorateLayout(children);
+    decorateContent(content, ['detail-M', 'heading-XL', 'body-S']);
     decorateIcons(el, false);
+    decorateButtons(content);
 }
