@@ -172,16 +172,16 @@
 
     .icon-block.vertical .foreground.container .text:first-child:nth-last-child(2) .icon-img,
     .icon-block.vertical .foreground.container .text:first-child:nth-last-child(2)~.text .icon-img {
-        max-width: 400px !important;
+        max-width: 400px;
     }
 
     .icon-block.vertical .foreground.container .text:first-child:nth-last-child(3) .icon-img,
     .icon-block.vertical .foreground.container .text:first-child:nth-last-child(3)~.text .icon-img {
-        max-width: 300px !important;
+        max-width: 300px;
     }
 
     .icon-block.vertical .foreground.container .text:first-child:nth-last-child(4) .icon-img,
     .icon-block.vertical .foreground.container .text:first-child:nth-last-child(4)~.text .icon-img {
-        max-width: 276px !important;
+        max-width: 276px;
     }
 }
