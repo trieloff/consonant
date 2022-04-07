@@ -21,7 +21,8 @@ export default function init(el) {
     const content = decorateLayout(children);
     for (let item of content.children) {
         const headingClass = el.classList.contains('vertical') ? 'heading-S' : 'heading-XL';
-        decorateContent(item, ['product-area', headingClass, 'body-M']);
+        const contentClasses = ['product-area', headingClass, 'body-M'];
+        decorateContent(item, contentClasses);
         decorateButtons(item);
     }
     decorateIcons(el, false);
