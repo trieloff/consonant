@@ -19,7 +19,8 @@ import { decorateButtons, decorateContent, decorateIcons, decorateLayout } from 
 export default function init(el) {
     const children = el.querySelectorAll(':scope > div');
     const content = decorateLayout(children);
-    decorateContent(content, ['detail-M', 'heading-XL', 'body-S']);
+    const contentClasses = ['detail-M', 'heading-XL', 'body-S'];
+    decorateContent(content, contentClasses);
     decorateButtons(content);
     decorateIcons(el, false);
 }
