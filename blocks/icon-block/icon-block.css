@@ -58,7 +58,7 @@
 }
 
 .icon-block .foreground.container .text .product-area {
-    margin: 0 auto 16px auto;
+    margin: 0 auto var(--spacing-s) auto;
     height: 80px;
     max-width: 234px;
     overflow: hidden;
