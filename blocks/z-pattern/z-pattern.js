@@ -17,6 +17,16 @@
 import { decorateBlock, loadBlock } from '../../scripts/scripts.js';
 import { getBlockSize } from "../../scripts/decorate.js";
 
+async function getOddRowsCount(rows) {
+  let zRowsOddCount = 0;
+  for await (const row of rows) {
+    const firstCol = row.querySelector(':scope > div > div:first-of-type');
+    const rowIsOdd = firstCol.querySelector('h1, h2, h3, h4, h5, h6');
+    if (rowIsOdd) zRowsOddCount++;
+  }
+  return zRowsOddCount;
+}
+
 const init = async (block) => {
     const h1 = block.querySelector('h1');
     if (h1) {
@@ -25,7 +35,7 @@ const init = async (block) => {
     }
     const size = getBlockSize(block);
     const zRows = block.querySelectorAll(':scope > div:not([class])');
-    zRows.forEach((mediaBlock, idx) => {
+    zRows.forEach((mediaBlock) => {
         mediaBlock.classList.add('media');
         decorateBlock(mediaBlock);
         const mediaRow = document.createElement('div');
@@ -37,16 +47,7 @@ const init = async (block) => {
         mediaBlock.appendChild(mediaRow);
         loadBlock(mediaBlock);
     });
-
-    // // Check how many z-rows are ordered Image/Copy
-    let zRowsOddCount = 0;
-    zRows.forEach((row) => {
-      const mediaWrapper = row.querySelector(':scope > div');
-      const rowLeftToRight = mediaWrapper.querySelector(':scope > div:first-of-type').classList.contains('text');
-      if (rowLeftToRight) zRowsOddCount++;
-    });
-
-    // // If all rows are ordered Image/Copy add alternating rtl class
+    const zRowsOddCount = await getOddRowsCount(zRows);
     if(zRowsOddCount === 0){
       zRows.forEach((row, i) => {
         if ( i % 2 ) row.classList.add('media--reversed');
