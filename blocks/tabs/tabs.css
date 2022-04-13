@@ -21,7 +21,6 @@
   margin: var(--spacing-m) 0 var(--spacing-m) 0;
 }
 
-
 .tabs div[role="tablist"]{
   position: relative;
   display: flex;
@@ -39,6 +38,11 @@
   display: none; /* Safari and Chrome */
 }
 
+.tabs div[role="tablist"] .tabList-container {
+  display: flex;
+  width: var(--grid-container-width);
+}
+
 /* center tabs */
 .tabs.center div[role="tablist"]:after,
 .tabs.center div[role="tablist"]:before {
@@ -52,9 +56,6 @@
   width: 100%;
 }
 
-.tabs div[role="tablist"] {
-  display: flex;
-}
 
 .tabs div[role="tablist"]:before {
   content: "";

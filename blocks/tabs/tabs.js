@@ -110,7 +110,7 @@ const horizontallyBound = (parentDiv, childDiv) => {
 function changeTabs(e) {
   const target = e.target;
   const parent = target.parentNode;
-  const grandparent = parent.parentNode;
+  const grandparent = parent.parentNode.nextSibling;
 
   // Remove all current selected tabs
   parent
@@ -147,6 +147,12 @@ const init = (element) => {
     const tabList = document.createElement('div');
     tabList.setAttribute('role', 'tablist');
     tabList.setAttribute('aria-label', 'TODO: ACC Tab Title');
+
+    const tabListContainer = document.createElement('div');
+    tabListContainer.classList.add('tabList-container', 'container');
+    const tabContentContainer = document.createElement('div');
+    tabContentContainer.classList.add('tabContent-container', 'container');
+
     rows.forEach((row, i) => {
       const rowTitle = row.querySelector(':scope > div:nth-child(1)');
       const rowContent = row.querySelector(':scope > div:nth-child(2)');
@@ -158,7 +164,7 @@ const init = (element) => {
       tabBtn.id = `tab-${i}`;
       tabBtn.innerText = rowTitle.textContent;
       rowTitle.remove();
-      tabList.append(tabBtn);
+      tabListContainer.append(tabBtn);
 
       const rowContentParent = rowContent.parentNode;
       rowContentParent.id = `panel-${i}`;
@@ -168,8 +174,11 @@ const init = (element) => {
       if(i > 0) {
         rowContentParent.setAttribute('hidden', '');
       }
+      tabContentContainer.append(rowContentParent);
     });
+    tabList.append(tabListContainer);
     element.prepend(tabList);
+    element.append(tabContentContainer);
   }
   initTabs();
 };
