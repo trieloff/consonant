@@ -1,0 +1,168 @@
+:root {
+
+  /* Tab Colors */
+  /* Light */
+  --tabs-border-color-light: #d8d8d8;
+  --tabs-border-hover-color-light: #acacac;
+  --tabs-text-color-light: #7e7e7e;
+  --tabs-active-text-color-light: #000000;
+  --tabs-bg-color-light: #f1f1f1;
+  --tabs-active-bg-color-light: #ffffff;
+  /* Dark */
+  --tabs-border-color-dark: #000000;
+  --tabs-text-color-dark: #cdcdcd;
+  --tabs-active-text-color-dark: #ffffff;
+  --tabs-bg-color-dark: #1a1a1a;
+  --tabs-active-bg-color-dark: #111111;
+}
+
+.tabs {
+  position: relative;
+  margin: var(--spacing-m) 0 var(--spacing-m) 0;
+}
+
+
+.tabs div[role="tablist"]{
+  position: relative;
+  display: flex;
+  z-index: 2;
+  background-image: linear-gradient(rgba(255,255,255,0), rgba(245,245,245,1));
+  /* ScrollProps */
+  /* If content exceeds height of container, overflow! */
+  overflow: auto;
+  overflow-y: hidden;
+  scroll-snap-type: x mandatory;
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+  scrollbar-width: none; /* Firefox 64 */
+}
+.tabs div[role="tablist"]::-webkit-scrollbar {
+  display: none; /* Safari and Chrome */
+}
+
+/* center tabs */
+.tabs.center div[role="tablist"]:after,
+.tabs.center div[role="tablist"]:before {
+  content: "";
+  margin: auto;
+}
+
+.tabs .tab-content {
+  padding: 16px 0;
+  border-bottom: 1px solid var(--tabs-border-color-light);
+  width: 100%;
+}
+
+.tabs div[role="tablist"] {
+  display: flex;
+}
+
+.tabs div[role="tablist"]:before {
+  content: "";
+  height: 1px;
+  background-color: var(--tabs-border-color-light);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+}
+
+div[role="tabpanel"] { }
+
+div[role="tablist"] button {
+  padding: 14px 16px 12px;
+  line-height: 16px;
+  font-size: 16px;
+  cursor: pointer;
+  color: var(--tabs-text-color-light);
+  width: 100%;
+  float: left;
+  border: 1px solid transparent;
+  border-color: var(--tabs-border-color-light) transparent;
+  margin-top: -1px;
+  background: var(--tabs-bg-color-light);
+  transition: color 0.1s ease-in-out, border-bottom-color 0.2s ease-in-out;
+  text-decoration: none;
+  white-space: nowrap;
+  z-index: 1;
+}
+div[role="tablist"] button:first-of-type{
+  margin-left: 0;
+  margin-top: 0;
+}
+div[role="tablist"] button:hover{
+  color: var(--tabs-active-text-color-light);
+}
+div[role="tablist"] button:active{
+  color: var(--link-color);
+}
+
+div[role="tablist"] button[aria-selected="true"] {
+  background: var(--tabs-active-bg-color-light);
+  color: var(--tabs-active-text-color-light);
+}
+/*- Tabs: .quiet -*/
+.tabs.quiet div[role="tablist"] button{
+  border-width: 0 0 2px;
+  border-color: transparent;
+  background: transparent;
+  padding-right: 0;
+  padding-left: 0;
+  margin-left: 16px;
+}
+.tabs.quiet div[role="tablist"] button:first-of-type {
+  margin-left: 0;
+}
+
+.tabs.quiet div[role="tablist"] button:hover{
+  border-bottom-color: var(--tabs-border-hover-color-light);
+}
+.tabs.quiet div[role="tablist"] button[aria-selected="true"]{
+  border-bottom-color: var(--tabs-border-hover-color-light);
+}
+
+/*invoke tabs as media (uncomment to enable)*/
+/*@media (min-width: 600px) {*/
+
+div[role="tablist"] button {
+  width: auto;
+  border-radius: 4px 4px 0 0;
+  margin-left: -1px;
+  margin-top: 0;
+  border-color: transparent;
+  background: transparent;
+}
+div[role="tablist"] button[aria-selected="true"] {
+  border-color: var(--tabs-border-color-light) var(--tabs-border-color-light) transparent;
+}
+.dark div[role="tablist"] button[aria-selected="true"] {
+  border-color: var(--tabs-border-color-dark) var(--tabs-border-color-dark) transparent;
+}
+
+/*}*/
+
+@media screen and (min-width: 1440px) {
+
+  div[role="tablist"] button {
+    padding: 24px 32px 18px;
+    line-height: 18px;
+    font-size: 18px;
+  }
+}
+
+.tabs.dark {
+  background: var(--tabs-active-bg-color-dark);
+}
+.tabs.dark div[role="tablist"] button {
+  color: var(--tabs-text-color-dark);
+  background: var(--tabs-bg-color-dark);
+}
+.tabs.dark div[role="tablist"] button[aria-selected="true"] {
+  color: white;
+  background: var(--tabs-active-bg-color-dark);
+}
+.tabs.dark .list-container:before {
+  background: var(--tabs-border-color-dark);
+}
+.tabs.dark div[role="tablist"] button[aria-selected="true"] {
+  background: var(--tabs-border-color-dark);
+}
