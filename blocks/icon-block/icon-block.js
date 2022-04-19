@@ -14,16 +14,27 @@
 * Icon Block - v0.0.1
 */
 
-import { decorateButtons, decorateContent, decorateIcons, decorateLayout } from "../../scripts/decorate.js";
+import { decorateButtons, decorateContent, decorateIcons } from "../../scripts/decorate.js";
 
 export default function init(el) {
     const children = el.querySelectorAll(':scope > div');
-    const content = decorateLayout(children);
-    for (let item of content.children) {
-        const headingClass = el.classList.contains('vertical') ? 'heading-S' : 'heading-XL';
-        const contentClasses = ['product-area', headingClass, 'body-M'];
-        decorateContent(item, contentClasses);
-        decorateButtons(item);
+    if (children.length > 1) {
+        if (children[0].childNodes.length == 1) {
+            children[0].classList.add('background');
+            const bgImg = children[0].querySelector(':scope img');
+            if (!bgImg) {
+                const bgColor = children[0].textContent;
+                el.style.background = bgColor;
+                children[0].remove();
+            }
+        }
+        const vertical = el.querySelectorAll(':scope > div:not([class])');
+        vertical.forEach(block => {
+            const headingClass = el.classList.contains('vertical') ? 'heading-S' : 'heading-XL';
+            const contentClasses = ['product-area', headingClass, 'body-M'];
+            decorateContent(block, contentClasses);
+            decorateButtons(block);
+        });
+        decorateIcons(el, false);
     }
-    decorateIcons(el, false);
 }

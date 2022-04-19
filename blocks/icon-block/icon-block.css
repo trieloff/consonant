@@ -39,7 +39,7 @@
     min-height: 700px;
 }
 
-.icon-block .foreground.container {
+.icon-block {
     padding-top: var(--spacing-xxl);
     display: flex;
     position: relative;
@@ -49,7 +49,7 @@
     text-align: center;
 }
 
-.icon-block .foreground.container .text {
+.icon-block .text {
     display: flex;
     flex-wrap: wrap;
     align-content: center;
@@ -57,61 +57,61 @@
     margin-bottom: var(--spacing-xxl);
 }
 
-.icon-block .foreground.container .text .product-area {
+.icon-block .text .product-area {
     margin: 0 auto var(--spacing-s) auto;
     height: 80px;
     max-width: 234px;
     overflow: hidden;
 }
 
-.icon-block .foreground.container .text .product-area img {
+.icon-block .text .product-area img {
     height: 80px;
     width: auto;
 }
 
-.icon-block .foreground.container .text>* {
+.icon-block .text>* {
     width: 100%;
 }
 
-.icon-block .foreground.container .text .heading-XL,
-.icon-block .foreground.container .text .heading-S {
+.icon-block .text .heading-XL,
+.icon-block .text .heading-S {
     margin: var(--spacing-s) 0;
 }
 
-.icon-block .foreground.container .text .body-M {
+.icon-block .text .body-M {
     margin-bottom: var(--spacing-m);
 }
 
-.icon-block .foreground.container .text .action-area {
+.icon-block .text .action-area {
     margin-bottom: 0;
 }
 
-.icon-block .foreground.container .text .action-area>a {
+.icon-block .text .action-area>a {
     margin-right: var(--spacing-m);
     white-space: nowrap;
 }
 
-.icon-block .foreground.container .text .action-area>a:last-child {
+.icon-block .text .action-area>a:last-child {
     margin: 0;
 }
 
 
-.icon-block .foreground.container div {
+.icon-block div {
     flex: 1 1 auto;
 }
 
 /* Vertical */
 
-.icon-block.vertical .foreground.container {
+.icon-block.vertical {
     text-align: left;
 }
 
-.icon-block.vertical .foreground.container .text .product-area {
+.icon-block.vertical .text .product-area {
     margin: 0;
     margin-bottom: var(--spacing-xs);
 }
 
-.icon-block.vertical .foreground.container .text .action-area>a:not(.con-button) {
+.icon-block.vertical .text .action-area>a:not(.con-button) {
     font-size: 14px;
     line-height: 21px;
 }
@@ -120,25 +120,25 @@
 /* Tablet */
 
 @media screen and (min-width: 768px) {
-    .icon-block .foreground.container .text .product-area {
+    .icon-block .text .product-area {
         max-width: 234px;
     }
 
     /* Vertical */
 
-    .icon-block.vertical .foreground.container {
+    .icon-block.vertical {
         gap: 32px;
         flex-direction: row;
         flex-wrap: wrap;
         align-items: flex-start;
     }
 
-    .icon-block.vertical .foreground.container .text {
+    .icon-block.vertical .text {
         flex: 1 1 45%;
     }
 
     /* 3up tablet layout with flexbox */
-    .icon-block.vertical .foreground.container .text:first-child:nth-last-child(3)~.text:last-child {
+    .icon-block.vertical .text:first-child:nth-last-child(3)~.text:last-child {
         padding-right: 55%;
     }
 }
@@ -146,47 +146,47 @@
 /* Desktop */
 
 @media screen and (min-width: 1200px) {
-    .icon-block .foreground.container {
+    .icon-block {
         padding: 104px 0;
     }
 
-    .icon-block .foreground.container .text {
+    .icon-block .text {
         width: 65%;
         margin: 0 auto;
     }
 
-    .icon-block .foreground.container .text .product-area {
+    .icon-block .text .product-area {
         max-width: 400px;
     }
 
     /* Vertical */
 
-    .icon-block.vertical .foreground.container {
+    .icon-block.vertical {
         flex-wrap: nowrap;
     }
 
-    .icon-block.vertical .foreground.container .text {
+    .icon-block.vertical .text {
         flex: 1 1 25%;
     }
 
     /* Vertical icon style based on number of items */
 
-    .icon-block.vertical .foreground.container .text:first-child:nth-last-child(3)~.text:last-child {
+    .icon-block.vertical .text:first-child:nth-last-child(3)~.text:last-child {
         padding-right: 0;
     }
 
-    .icon-block.vertical .foreground.container .text:first-child:nth-last-child(2) .product-area,
-    .icon-block.vertical .foreground.container .text:first-child:nth-last-child(2)~.text .product-area {
+    .icon-block.vertical .text:first-child:nth-last-child(2) .product-area,
+    .icon-block.vertical .text:first-child:nth-last-child(2)~.text .product-area {
         max-width: 400px;
     }
 
-    .icon-block.vertical .foreground.container .text:first-child:nth-last-child(3) .product-area,
-    .icon-block.vertical .foreground.container .text:first-child:nth-last-child(3)~.text .product-area {
+    .icon-block.vertical .text:first-child:nth-last-child(3) .product-area,
+    .icon-block.vertical .text:first-child:nth-last-child(3)~.text .product-area {
         max-width: 300px;
     }
 
-    .icon-block.vertical .foreground.container .text:first-child:nth-last-child(4) .product-area,
-    .icon-block.vertical .foreground.container .text:first-child:nth-last-child(4)~.text .product-area {
+    .icon-block.vertical .text:first-child:nth-last-child(4) .product-area,
+    .icon-block.vertical .text:first-child:nth-last-child(4)~.text .product-area {
         max-width: 276px;
     }
 }
