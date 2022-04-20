@@ -133,13 +133,15 @@
         align-items: flex-start;
     }
 
-    .icon-block.vertical .foreground.container .text {
+    .icon-block.vertical.two-up .foreground.container .text,
+    .icon-block.vertical.three-up .foreground.container .text,
+    .icon-block.vertical.four-up .foreground.container .text {
         flex: 1 1 45%;
     }
 
     /* 3up tablet layout with flexbox */
-    .icon-block.vertical .foreground.container .text:first-child:nth-last-child(3)~.text:last-child {
-        padding-right: 55%;
+    .icon-block.vertical.three-up .foreground.container .text:last-child {
+        padding-right: 53%;
     }
 }
 
@@ -165,27 +167,35 @@
     }
 
     .icon-block.vertical .foreground.container .text {
+        flex-grow: 1;
+        flex-basis: 0;
+    }
+
+    .icon-block.vertical.two-up .foreground.container .text {
+        flex: 1 1 45%;
+    }
+
+    .icon-block.vertical.three-up .foreground.container .text {
+        flex: 1 1 33.3%;
+    }
+
+    .icon-block.vertical.four-up .foreground.container .text {
         flex: 1 1 25%;
     }
 
-    /* Vertical icon style based on number of items */
-
-    .icon-block.vertical .foreground.container .text:first-child:nth-last-child(3)~.text:last-child {
+    .icon-block.vertical.three-up .foreground.container .text:last-child {
         padding-right: 0;
     }
 
-    .icon-block.vertical .foreground.container .text:first-child:nth-last-child(2) .product-area,
-    .icon-block.vertical .foreground.container .text:first-child:nth-last-child(2)~.text .product-area {
+    .icon-block.vertical.two-up .foreground.container .text .product-area {
         max-width: 400px;
     }
 
-    .icon-block.vertical .foreground.container .text:first-child:nth-last-child(3) .product-area,
-    .icon-block.vertical .foreground.container .text:first-child:nth-last-child(3)~.text .product-area {
+    .icon-block.vertical.three-up .foreground.container .text .product-area {
         max-width: 300px;
     }
 
-    .icon-block.vertical .foreground.container .text:first-child:nth-last-child(4) .product-area,
-    .icon-block.vertical .foreground.container .text:first-child:nth-last-child(4)~.text .product-area {
+    .icon-block.vertical.four-up .foreground.container .text .product-area {
         max-width: 276px;
     }
 }

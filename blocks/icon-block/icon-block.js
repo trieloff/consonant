@@ -39,7 +39,7 @@ export default function init(el) {
         [...vertical].forEach(block => {
             decorateContent(block, contentClasses);
             decorateButtons(block);
-            container.insertAdjacentElement('beforeEnd', block);
+            container.insertAdjacentElement('beforeEnd', block.children[0]);
         });
         decorateIcons(el, false);
     }
