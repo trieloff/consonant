@@ -187,8 +187,8 @@
     max-width: var(--block-container-width-l);
   }
 
-  .media.large > div.media-row .text { width: 38%; max-width: 440px; }
-  .media.large > div.media-row .image { width: 62%; max-width: 700px; }
+  .media.large > div.media-row .text { width: 50%; }
+  .media.large > div.media-row .image { width: 50%; }
 
   .media.media--reversed > div > div:first-child {
     order: 2;
@@ -287,4 +287,6 @@
   .media.large > div.media-row {
     margin: 0 auto;
   }
+  .media.large > div.media-row .text { width: 38%; max-width: 440px; }
+  .media.large > div.media-row .image { width: 62%; max-width: 700px; }
 }
