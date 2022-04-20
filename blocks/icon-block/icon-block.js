@@ -28,12 +28,18 @@ export default function init(el) {
                 children[0].remove();
             }
         }
+
+        const container = document.createElement('div');
+        container.classList.add('foreground', 'container');
+        el.appendChild(container)
+
         const vertical = el.querySelectorAll(':scope > div:not([class])');
-        vertical.forEach(block => {
-            const headingClass = el.classList.contains('vertical') ? 'heading-S' : 'heading-XL';
-            const contentClasses = ['product-area', headingClass, 'body-M'];
+        const headingClass = el.classList.contains('vertical') ? 'heading-S' : 'heading-XL';
+        const contentClasses = ['product-area', headingClass, 'body-M'];
+        [...vertical].forEach(block => {
             decorateContent(block, contentClasses);
             decorateButtons(block);
+            container.insertAdjacentElement('beforeEnd', block);
         });
         decorateIcons(el, false);
     }
