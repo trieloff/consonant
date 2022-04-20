@@ -149,21 +149,20 @@
   width: 100%;
 }
 
-
-/* Media Multiple */
-.media.multiple .media-container {
+/* Media multiple two-up, three-up, four-up*/
+.media[class*="-up"] .media-container {
   max-width: var(--grid-container-width);
   margin: 0 auto;
   padding: var(--spacing-m) 0;
   position: relative;
 }
-.media.multiple .media-container > div.media-row {
+.media[class*="-up"] .media-container > div.media-row {
   width: 100%;
   display: block;
   max-width: 100%;
   padding-bottom: var(--spacing-l);
 }
-.media.multiple .media-container > div.media-row > div:first-of-type {
+.media[class*="-up"] .media-container > div.media-row > div:first-of-type {
   margin-right: 0;
   margin-bottom: var(--spacing-m);
 }
@@ -195,42 +194,42 @@
     order: 2;
   }
 
-  /* Media Multi */
-  .media.multiple .media-container > div.media-row {
+  /* Media multiple */
+  .media[class*="-up"] .media-container > div.media-row {
     padding-bottom: 0;
   }
 
-  .media.multiple.columns-2 .media-container {
+  .media.two-up .media-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: auto;
     gap: var(--spacing-s);
   }
 
-  .media.multiple.columns-3 .media-container {
+  .media.three-up .media-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: auto;
     gap: var(--spacing-s);
   }
 
-  .media.multiple.columns-4 .media-container {
+  .media.four-up .media-container {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: auto;
     gap: var(--spacing-s);
   }
 
-  .media.multiple.columns-2.z-pattern .media-container,
-  .media.multiple.columns-3.z-pattern .media-container,
-  .media.multiple.columns-4.z-pattern .media-container {
+  .media.two-up.z-pattern .media-container,
+  .media.three-up.z-pattern .media-container,
+  .media.four-up.z-pattern .media-container {
     display: flex;
     flex-direction: column;
   }
 
-  .media.multiple.columns-2.z-pattern .media-container .media-row,
-  .media.multiple.columns-3.z-pattern .media-container .media-row,
-  .media.multiple.columns-4.z-pattern .media-container .media-row {
+  .media.two-up.z-pattern .media-container .media-row,
+  .media.three-up.z-pattern .media-container .media-row,
+  .media.four-up.z-pattern .media-container .media-row {
     padding: 0;
     max-width: var(--grid-container-width);
     margin: 0 auto;
@@ -242,22 +241,22 @@
     position: relative;
   }
 
-  .media.multiple.columns-2.z-pattern .media-container .media-row.z-row-odd,
-  .media.multiple.columns-3.z-pattern .media-container .media-row.z-row-odd,
-  .media.multiple.columns-4.z-pattern .media-container .media-row.z-row-odd {
+  .media.two-up.z-pattern .media-container .media-row.z-row-odd,
+  .media.three-up.z-pattern .media-container .media-row.z-row-odd,
+  .media.four-up.z-pattern .media-container .media-row.z-row-odd {
     flex-direction: row-reverse;
   }
 
-  .media.multiple.columns-2.z-pattern .media-container .media-row > div:first-of-type,
-  .media.multiple.columns-3.z-pattern .media-container .media-row > div:first-of-type,
-  .media.multiple.columns-4.z-pattern .media-container .media-row > div:first-of-type {
+  .media.two-up.z-pattern .media-container .media-row > div:first-of-type,
+  .media.three-up.z-pattern .media-container .media-row > div:first-of-type,
+  .media.four-up.z-pattern .media-container .media-row > div:first-of-type {
     margin-right: var(--spacing-m);
     margin-bottom: 0;
   }
 
-  .media.multiple.columns-2.z-pattern .media-container .media-row > div,
-  .media.multiple.columns-3.z-pattern .media-container .media-row > div,
-  .media.multiple.columns-4.z-pattern .media-container .media-row > div {
+  .media.two-up.z-pattern .media-container .media-row > div,
+  .media.three-up.z-pattern .media-container .media-row > div,
+  .media.four-up.z-pattern .media-container .media-row > div {
     flex: 0 0 50%;
   }
 
@@ -280,7 +279,7 @@
   .media.large > div.media-row {
     margin: 0 var(--spacing-m);
   }
-  .media.multiple.columns-2 .media-container {
+  .media.two-up .media-container {
     max-width: var(--block-container-width-m);
   }
 }

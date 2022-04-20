@@ -20,12 +20,11 @@ const init = async (block) => {
     const toggleClassStr = 'media-reverse-mobile';
     const children = block.querySelectorAll(':scope > div');
     if (children.length > 1) {
-      if(children[0].childNodes.length == 1) {
+      if(children[0].childNodes.length === 1) {
         children[0].classList.add('background');
         const bgImg = children[0].querySelector(':scope img');
         if (!bgImg) {
-          const bgColor = children[0].textContent;
-          block.style.background = bgColor;
+          block.style.background = children[0].textContent;
           children[0].remove();
         }
       }
@@ -57,11 +56,12 @@ const init = async (block) => {
       block.classList.add(toggleClassStr);
     }
 
-    const multiple = block.classList.contains('multiple');
-    if(multiple) {
+    const keyword = new RegExp('\\b' + '-up' + '\\b', 'i');
+    const hasKeyword = keyword.test(block.classList);
+    if(hasKeyword) {
       const mediaContainer = document.createElement('div');
       mediaContainer.classList.add('media-container');
-      media.forEach(function (row, index) {
+      media.forEach(function (row) {
         mediaContainer.append(row);
       });
       block.append(mediaContainer);
