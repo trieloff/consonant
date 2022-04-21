@@ -46,19 +46,19 @@
     align-items: center;
     justify-content: stretch;
     gap:  var(--gap-s);
-    padding: var(--padding-s) 0;
+    /*padding: var(--padding-s) 0;*/
     position: relative;
     flex-direction: column;
 }
 
 .media.medium > div.media-row {
   gap: var(--gap-m);
-  padding: var(--padding-m) 0;
+  /*padding: var(--padding-m) 0;*/
 }
 
 .media.large > div.media-row {
   gap: var(--gap-l);
-  padding: var(--padding-l) 0;
+  /*padding: var(--padding-l) 0;*/
 }
 
 .media.media-reverse-mobile > div {

@@ -15,6 +15,18 @@
     margin: 0 auto var(--spacing-s) auto;
 }
 
+.z-pattern .media > div.media-row {
+  padding: var(--padding-s) 0;
+}
+
+.z-pattern .media.medium > div.media-row {
+  padding: var(--padding-m) 0;
+}
+
+.z-pattern .media.large > div.media-row {
+  padding: var(--padding-l) 0;
+}
+
 @media screen and (min-width: 600px) {
   .z-pattern {
     max-width: var(--block-container-width-s);
