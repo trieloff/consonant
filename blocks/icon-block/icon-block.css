@@ -156,6 +156,10 @@
         margin: 0 auto;
     }
 
+    .icon-block:not(.vertical) .foreground.container {
+        max-width: 800px;
+    }
+
     .icon-block .foreground.container .text .product-area {
         max-width: 400px;
     }
@@ -171,8 +175,12 @@
         flex-basis: 0;
     }
 
+    .icon-block.vertical.two-up .foreground.container {
+        max-width: 1000px;
+    }
+
     .icon-block.vertical.two-up .foreground.container .text {
-        flex: 1 1 45%;
+        flex: 1 1 50%;
     }
 
     .icon-block.vertical.three-up .foreground.container .text {

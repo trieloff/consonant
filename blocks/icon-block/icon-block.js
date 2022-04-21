@@ -40,6 +40,7 @@ export default function init(el) {
             decorateContent(block, contentClasses);
             decorateButtons(block);
             container.insertAdjacentElement('beforeEnd', block.children[0]);
+            block.remove();
         });
         decorateIcons(el, false);
     }
