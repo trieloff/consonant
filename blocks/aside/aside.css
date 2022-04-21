@@ -208,17 +208,18 @@
     .aside .foreground.container .text {
         margin-bottom: 0;
         padding: var(--spacing-xxl) 0;
-        flex: -1 0 50%;
+        flex: 1 0 50%;
     }
 
     /* Simple */
 
-    .aside.simple .foreground.container .text {
-        margin-bottom: 0;
+    .aside.simple .foreground.container {
+        width: 100%;
     }
 
-    .aside.simple .foreground.container .image {
-        display: block;
+    .aside.simple .foreground.container .text {
+        margin-bottom: 0;
+        max-width: 318px;
     }
 
     /* Split */
@@ -272,10 +273,6 @@
 
     .aside.split.half .foreground.container .text {
         flex: 0 0 44%;
-    }
-
-    .aside.split.half .foreground.container .image {
-        flex: 0 0 53%;
     }
 
     /* Augmented Image */
@@ -334,6 +331,17 @@
         margin: var(--spacing-s) 0;
         font-size: var(--type-heading-xl-size);
         line-height: var(--type-heading-xl-lh);
+    }
+
+    /* Simple */
+
+    .aside.simple .foreground.container {
+        width: 100%;
+    }
+
+    .aside.simple .foreground.container .text {
+        margin-bottom: 0;
+        max-width: 500px;
     }
 
     /* Split */
