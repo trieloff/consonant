@@ -195,19 +195,19 @@
         flex-direction: row;
         padding: 0;
         margin: 0 auto;
+        gap: 32px;
     }
 
     .aside .foreground.container .image {
         margin-top: 0;
         margin-bottom: 0;
         flex: 0 0 50%;
-        padding-left: var(--spacing-s);
         display: block;
     }
 
     .aside .foreground.container .text {
         margin-bottom: 0;
-        padding: var(--spacing-xxl) var(--spacing-s) var(--spacing-xxl) 0;
+        padding: var(--spacing-xxl) 0;
         flex: -1 0 50%;
     }
 
@@ -234,7 +234,7 @@
     }
 
     .aside.split .background img {
-        max-width: 59vw;
+        max-width: 437px;
         width: 100vw;
         position: absolute;
         right: 0;
@@ -252,8 +252,8 @@
 
     .aside.split .foreground.container .text {
         color: white;
-        flex: 0 0 34%;
-        padding: var(--spacing-xxl) 32px var(--spacing-xxl) 0;
+        flex: 0 0 212px;
+        padding: var(--spacing-xxl) 0;
         max-width: 100%;
         margin: 0;
     }
@@ -312,14 +312,18 @@
         min-height: 700px;
     }
 
+    .aside .foreground.container {
+        width: var(--grid-container-width);
+    }
+
     .aside .foreground.container .image {
-        flex: 0 0 55%;
-        max-width: 520px;
+        flex: 0 0 50%;
+        max-width: 500px;
         object-fit: cover;
     }
 
     .aside .foreground.container .text {
-        flex: 0 0 41%;
+        max-width: 500px;
     }
 
     .aside .foreground.container .product-area img {
@@ -335,12 +339,12 @@
     /* Split */
 
     .aside.split .background img {
-        max-width: 60vw;
+        max-width: 1160px;
     }
 
     .aside.split .foreground.container .text {
-        flex: 0 0 27%;
-        padding: var(--spacing-xxl) 32px var(--spacing-xxl) 0;
+        flex: 0 0 300px;
+        padding: var(--spacing-xxl) 0;
     }
 
     .aside.split .foreground.container .image {
