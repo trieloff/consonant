@@ -30,10 +30,12 @@ async function getOddRowsCount(rows) {
 const init = async (block) => {
     const header = block.querySelector('h1, h2, h3, h4, h5, h6');
     if (header) {
-        const headingContainer = header.parentElement;
-        headingContainer.classList.add('container', 'heading-row');
-        headingContainer.parentElement.classList.add('z-pattern-heading');
-        header.classList.add('heading-L');
+        const headingRow = header.parentElement;
+        headingRow.classList.add('heading-row');
+        headingRow.parentElement.classList.add('container');
+        const blockIsLarge = block.classList.contains('large');
+        const headerClass = blockIsLarge ? 'heading-XL' : 'heading-L';
+        header.classList.add(headerClass, 'headline');
     }
     const size = getBlockSize(block);
     const zRows = block.querySelectorAll(':scope > div:not([class])');

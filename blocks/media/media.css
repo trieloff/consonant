@@ -258,15 +258,8 @@
   .media > .foreground .media-row {
     margin: 0 auto;
   }
-  .media.medium > .foreground .media-row,
-  .media.large > .foreground .media-row {
-    margin: 0 var(--spacing-m);
-  }
 }
 @media screen and (min-width: 1000px) {
-  .media.medium > .foreground .media-row {
-    margin: 0 auto;
-  }
   .media.large > .foreground .media-row {
     margin: 0 var(--spacing-m);
   }
