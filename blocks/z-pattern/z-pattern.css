@@ -1,8 +1,9 @@
 /* Z-Pattern v.01 */
 
-.z-pattern {
+.z-pattern-container {
   margin: 80px auto;
 }
+
 .z-pattern .heading-row {
     text-align: center;
     margin: 0 auto;
