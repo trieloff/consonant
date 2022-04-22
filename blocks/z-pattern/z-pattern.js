@@ -28,10 +28,12 @@ async function getOddRowsCount(rows) {
 }
 
 const init = async (block) => {
-    const h1 = block.querySelector('h1');
-    if (h1) {
-        h1.parentElement.parentElement.classList.add('z-pattern-heading');
-        h1.classList.add('heading-L');
+    const header = block.querySelector('h1, h2, h3, h4, h5, h6');
+    if (header) {
+        const headingContainer = header.parentElement;
+        headingContainer.classList.add('container');
+        headingContainer.parentElement.classList.add('z-pattern-heading');
+        header.classList.add('heading-L');
     }
     const size = getBlockSize(block);
     const zRows = block.querySelectorAll(':scope > div:not([class])');
@@ -48,7 +50,7 @@ const init = async (block) => {
         loadBlock(mediaBlock);
     });
     const zRowsOddCount = await getOddRowsCount(zRows);
-    if(zRowsOddCount === 0){
+    if(zRowsOddCount === 0) {
       zRows.forEach((row, i) => {
         if ( i % 2 ) row.classList.add('media--reversed');
       });

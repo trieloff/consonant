@@ -30,12 +30,14 @@ const init = async (block) => {
       }
     }
 
-    const zpattern = block.classList.contains('z-pattern');
+    const zPattern = block.classList.contains('z-pattern');
     const size = getBlockSize(block);
     const media = block.querySelectorAll(':scope > div:not([class])');
-    media.forEach((row, i) => {
 
-        if(zpattern && i % 2) {
+    const container = document.createElement('div');
+    container.classList.add('container', 'foreground');
+    media.forEach((row, i) => {
+        if(zPattern && i % 2) {
           row.classList.add(toggleClassStr);
         }
         row.classList.add(`media-row`);
@@ -45,26 +47,15 @@ const init = async (block) => {
         if (image) {
           image.classList.add('image');
         }
-
         decorateText(text, size);
         decorateIcons(text);
         decorateButtons(text);
+        container.append(row);
     });
-
-    const mediaRowReversed  = block.querySelector(':scope > div.media-row > div').classList.contains('text');
+    block.append(container);
+    const mediaRowReversed  = block.querySelector(':scope > .foreground > .media-row > div').classList.contains('text');
     if(mediaRowReversed) {
       block.classList.add(toggleClassStr);
-    }
-
-    const keyword = new RegExp('\\b' + '-up' + '\\b', 'i');
-    const hasKeyword = keyword.test(block.classList);
-    if(hasKeyword) {
-      const mediaContainer = document.createElement('div');
-      mediaContainer.classList.add('media-container');
-      media.forEach(function (row) {
-        mediaContainer.append(row);
-      });
-      block.append(mediaContainer);
     }
 }
 

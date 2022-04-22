@@ -1,40 +1,21 @@
 
 .z-pattern {
-    padding: var(--spacing-xxl) 0;
-    max-width: var(--grid-container-width);
-    margin: 0 auto;
-}
-
-.z-pattern > div {
-    max-width: 1200px;
-    margin: 0 auto;
+    /*padding: var(--spacing-l) 0;*/
+  margin: 0 auto;
 }
 
 .z-pattern > .z-pattern-heading {
     text-align: center;
-    margin: 0 auto var(--spacing-s) auto;
-}
-
-.z-pattern .media > div.media-row {
-  padding: var(--padding-s) 0;
-}
-
-.z-pattern .media.medium > div.media-row {
-  padding: var(--padding-m) 0;
-}
-
-.z-pattern .media.large > div.media-row {
-  padding: var(--padding-l) 0;
 }
 
 @media screen and (min-width: 600px) {
-  .z-pattern {
+  .z-pattern .container {
     max-width: var(--block-container-width-s);
   }
-  .z-pattern.medium {
+  .z-pattern.medium .container {
     max-width: var(--block-container-width-m);
   }
-  .z-pattern.large {
+  .z-pattern.large .container {
     max-width: var(--block-container-width-l);
   }
 }
