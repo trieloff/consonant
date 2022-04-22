@@ -1,7 +1,6 @@
 /* Z-Pattern v.01 */
 
-main .section-wrapper > div > .z-pattern[data-block-status='loaded'] {
-  display: block;
+.z-pattern {
   margin: 80px auto;
 }
 .z-pattern .heading-row {

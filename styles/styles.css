@@ -279,5 +279,5 @@ main .section-wrapper > div > [class] {
 }
 
 main .section-wrapper > div > [data-block-status='loaded'] {
-  display: unset;
+  display: block;
 }
