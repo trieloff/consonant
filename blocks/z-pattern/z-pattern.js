@@ -31,7 +31,7 @@ const init = async (block) => {
     const header = block.querySelector('h1, h2, h3, h4, h5, h6');
     if (header) {
         const headingContainer = header.parentElement;
-        headingContainer.classList.add('container');
+        headingContainer.classList.add('container', 'heading-row');
         headingContainer.parentElement.classList.add('z-pattern-heading');
         header.classList.add('heading-L');
     }

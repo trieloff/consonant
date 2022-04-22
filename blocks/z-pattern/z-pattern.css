@@ -1,6 +1,6 @@
+/* Z-Pattern v.01 */
 
 .z-pattern {
-    /*padding: var(--spacing-l) 0;*/
   margin: 0 auto;
 }
 
@@ -9,13 +9,15 @@
 }
 
 @media screen and (min-width: 600px) {
-  .z-pattern .container {
+  .z-pattern .heading-row {
     max-width: var(--block-container-width-s);
   }
-  .z-pattern.medium .container {
+
+  .z-pattern.medium .heading-row {
     max-width: var(--block-container-width-m);
   }
-  .z-pattern.large .container {
+
+  .z-pattern.large .heading-row {
     max-width: var(--block-container-width-l);
   }
 }
