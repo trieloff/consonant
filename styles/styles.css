@@ -136,6 +136,9 @@ a:active  {
 a:hover {
   color: var(--color-primary-darker);
 }
+.dark a:hover{
+  color: var(--color-primary-lighter);
+}
 
 
 /* Basics */
