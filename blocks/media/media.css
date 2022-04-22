@@ -100,14 +100,14 @@
   gap: var(--spacing-s);
 }
 
-.media .text .product-area {
+.text .product-area {
   margin: 0 0 var(--spacing-m) 0;
   gap: var(--spacing-xs) var(--spacing-s);
   display: grid;
   grid-template-columns: 1fr;
 }
 
-.media .text .icon {
+.text .icon {
   text-transform: capitalize;
   font-weight: 700;
   display: inline-flex;
@@ -118,15 +118,15 @@
   padding: 0;
 }
 
-.media .text .icon:hover {
+.text .icon:hover {
   text-decoration: underline;
 }
 
-.media .text .icon img{
+.text .icon img{
   padding-right: 12px;
 }
 
-.media.dark .text .icon {
+.dark .text .icon {
   color: white;
 }
 

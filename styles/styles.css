@@ -125,8 +125,14 @@ body {
   margin: 0;
   font-size: var(--type-body-m-size);
   line-height: var(--type-body-m-lh);
+  color: black;
+  background-color: white;
 }
 
+.dark {
+  background-color: black;
+  color: white;
+}
 
 a:link,
 a:visited,
@@ -139,6 +145,7 @@ a:hover {
 .dark a:hover{
   color: var(--color-primary-lighter);
 }
+
 
 
 /* Basics */

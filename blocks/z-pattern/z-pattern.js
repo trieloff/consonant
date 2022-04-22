@@ -27,7 +27,45 @@ async function getOddRowsCount(rows) {
   return zRowsOddCount;
 }
 
+function isColorDark(color) {
+  let r, g, b;
+  // Check the format of the color, HEX or RGB?
+  if (color.match(/^rgb/)) {
+    // If HEX --> store the red, green, blue values in separate variables
+    color = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
+    r = color[1];
+    g = color[2];
+    b = color[3];
+  } else {
+    // If RGB --> Convert it to HEX
+    color = +("0x" + color.slice(1).replace( color.length < 5 && /./g, '$&$&' ));
+    r = color >> 16;
+    g = color >> 8 & 255;
+    b = color & 255;
+  }
+  // HSP (Highly Sensitive Poo) equation from http://alienryderflex.com/hsp.html
+  const hsp = Math.sqrt( 0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b) );
+  // Using the HSP value, determine whether the color is light or dark
+  return (hsp < 127.5);
+}
+
 const init = async (block) => {
+    const children = block.querySelectorAll(':scope > div');
+    if (children.length > 1) {
+      // If first two rows are single column this indicates a bg decorator row is present
+      if (children[0].childNodes.length === 1 && children[1].childNodes.length === 1) {
+        children[0].classList.add('background');
+        const bgImg = children[0].querySelector(':scope img');
+        if (!bgImg) {
+          block.style.background = children[0].textContent;
+          const blockColorDark = isColorDark(children[0].textContent);
+          if(blockColorDark) {
+            block.classList.add('dark')
+          }
+          children[0].remove();
+        }
+      }
+    }
     const header = block.querySelector('h1, h2, h3, h4, h5, h6');
     if (header) {
         const headingRow = header.parentElement;
