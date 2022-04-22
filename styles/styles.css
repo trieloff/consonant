@@ -272,3 +272,12 @@ a:hover {
   color: #fff;
   background: #000;
 }
+
+/* progressive section appearance */
+main .section-wrapper > div > [class] {
+  display: none;
+}
+
+main .section-wrapper > div > [data-block-status='loaded'] {
+  display: unset;
+}
