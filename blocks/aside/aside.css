@@ -61,8 +61,6 @@
 
 .aside .foreground.container .text .heading-XL {
     margin: var(--spacing-s) 0;
-    font-size: var(--type-heading-l-size);
-    line-height: var(--type-heading-l-lh);
 }
 
 .aside .foreground.container .text .body-S {
@@ -193,22 +191,23 @@
         justify-content: space-between;
         align-items: stretch;
         flex-direction: row;
-        padding: 0;
         margin: 0 auto;
-        gap: 32px;
     }
 
     .aside .foreground.container .image {
-        margin-top: 0;
-        margin-bottom: 0;
+        margin: 0 auto;
         flex: 0 0 50%;
         display: block;
+        max-width: 302px;
+        padding-left: 16px;
     }
-
+    
     .aside .foreground.container .text {
         margin-bottom: 0;
         padding: var(--spacing-xxl) 0;
         flex: 1 0 50%;
+        max-width: 302px;
+        padding-right: 16px;
     }
 
     /* Simple */
@@ -220,6 +219,7 @@
     .aside.simple .foreground.container .text {
         margin-bottom: 0;
         max-width: 318px;
+        padding-right: 0;
     }
 
     /* Split */
@@ -329,8 +329,6 @@
 
     .aside .foreground.container .text .heading-XL {
         margin: var(--spacing-s) 0;
-        font-size: var(--type-heading-xl-size);
-        line-height: var(--type-heading-xl-lh);
     }
 
     /* Simple */
