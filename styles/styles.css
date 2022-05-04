@@ -162,6 +162,23 @@ body.appear {
   display: unset;
 }
 
+.dark {
+  background-color: black;
+  color: white;
+}
+
+a:link,
+a:visited,
+a:active  {
+  color: var(--color-primary);
+}
+a:hover {
+  color: var(--color-primary-darker);
+}
+.dark a:hover{
+  color: var(--color-primary-lighter);
+}
+
 /* Basics */
 .container {
   max-width: var(--grid-container-width);
@@ -319,6 +336,12 @@ pre {
   border: 2px solid var(--color-primary-darker);
 }
 
+.dark .con-button.blue:hover,
+.dark .con-button.blue:active {
+  color: white;
+}
+
+
 .con-button.outline {
   color: #000;
   background: #fff;
@@ -337,3 +360,11 @@ main .section-wrapper[data-section-status='initialized'] {
   display: none;
 }
 
+/* progressive block appearance */
+main .section-wrapper > div > [class] {
+  display: none;
+}
+
+main .section-wrapper > div > [data-block-status='loaded'] {
+  display: block;
+}
