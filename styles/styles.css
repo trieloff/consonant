@@ -376,7 +376,7 @@ pre {
 /* progressive section appearance */
 main .section-wrapper[data-section-status='loading'],
 main .section-wrapper[data-section-status='initialized'] {
-  display: none;
+  /*display: none;*/
 }
 
 /* progressive block appearance */
