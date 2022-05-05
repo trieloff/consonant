@@ -88,7 +88,10 @@ export function decorateLayout(elems) {
     background.classList.add('background');
     if (!background.querySelector(':scope img')) {
       background.children[0].style.display = 'none';
-      background.setAttribute('style', `background: ${background.textContent}`);
+      const is_hex = background.textContent[0] == "#";
+      const lib_color = !is_hex && window.colorlibrary[background.textContent];
+      const bg_color = !is_hex && lib_color ? lib_color : background.textContent;
+      background.setAttribute('style', `background: ${bg_color ?? 'white'}`);
     }
   }
   return foreground;

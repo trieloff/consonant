@@ -9,10 +9,6 @@
     overflow: hidden;
 }
 
-.aside[data-block-status="loaded"] {
-    display: flex;
-}
-
 .aside.split[data-block-status="loaded"] {
     display: flex;
 }
