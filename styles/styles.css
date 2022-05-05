@@ -94,17 +94,6 @@
   --text-color: #000;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --link-color: #1473e6;
-    --link-hover-color: #1780ff;
-    --background-color: #000;
-    --overlay-background-color: #ffffff20;
-    --highlight-background-color: #ffffff40;
-    --text-color: #fff;
-  }
-}
-
 @media (min-width: 1200px) {
   :root {
     --type-heading-xxxl-size: 80px;
@@ -199,7 +188,6 @@ code, samp {
 pre {
   overflow: scroll;
 }
-
 
 /* .dark */
 .dark {
