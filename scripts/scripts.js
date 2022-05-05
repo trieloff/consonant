@@ -82,6 +82,48 @@ export function loadStyle(href, callback) {
 }
 
 /**
+ * fetches the string variables.
+ * @returns {object} localized variables
+ */
+export async function fetchColorLibrary() {
+  if (!window.colorlibrary) {
+    const resp = await fetch(`${window.hlx.codeBasePath}/docs/color-library.json`);
+    const json = await resp.json();
+    window.colorlibrary = {};
+    json.data.forEach((color) => {
+      window.colorlibrary[color.key] = color.value;
+    });
+  }
+  return window.colorlibrary;
+}
+
+/**
+ * fetches the color lightness.
+ * @returns {boolean}
+ */
+export function isColorDark(color) {
+  let r, g, b;
+  // Check the format of the color, HEX or RGB?
+  if (color.match(/^rgb/)) {
+    // If HEX --> store the red, green, blue values in separate variables
+    color = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
+    r = color[1];
+    g = color[2];
+    b = color[3];
+  } else {
+    // If RGB --> Convert it to HEX
+    color = +("0x" + color.slice(1).replace( color.length < 5 && /./g, '$&$&' ));
+    r = color >> 16;
+    g = color >> 8 & 255;
+    b = color & 255;
+  }
+  // HSP equation from http://alienryderflex.com/hsp.html
+  const hsp = Math.sqrt( 0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b) );
+  // Using the HSP value, determine whether the color is light or dark
+  return (hsp < 127.5);
+}
+
+/**
  * Retrieves the content of a metadata tag.
  * @param {string} name The metadata name (or property)
  * @returns {string} The metadata value
@@ -160,60 +202,6 @@ export function decorateBlock(block) {
 }
 
 /**
- * Extracts the config from a block.
- * @param {Element} block The block element
- * @returns {object} The block config
- */
-export function readBlockConfig(block) {
-  const config = {};
-  block.querySelectorAll(':scope>div').forEach((row) => {
-    if (row.children) {
-      const cols = [...row.children];
-      if (cols[1]) {
-        const col = cols[1];
-        const name = toClassName(cols[0].textContent);
-        let value = '';
-        if (col.querySelector('a')) {
-          const as = [...col.querySelectorAll('a')];
-          if (as.length === 1) {
-            value = as[0].href;
-          } else {
-            value = as.map((a) => a.href);
-          }
-        } else if (col.querySelector('p')) {
-          const ps = [...col.querySelectorAll('p')];
-          if (ps.length === 1) {
-            value = ps[0].textContent;
-          } else {
-            value = ps.map((p) => p.textContent);
-          }
-        } else value = row.children[1].textContent;
-        config[name] = value;
-      }
-    }
-  });
-  return config;
-}
-
-/**
- * Process section meta.
- * @param {Element} section The container element
- */
-export function processSectionMeta(section) {
-  const sectionMeta = section.querySelector('div.section-metadata');
-  if (sectionMeta) {
-    const meta = readBlockConfig(sectionMeta);
-    const keys = Object.keys(meta);
-    keys.forEach((key) => {
-      if (key === 'style') section.style = meta.style;
-      // if (key === 'style') section.classList.add(toClassName(meta.style));
-      else section.dataset[key] = meta[key];
-    });
-    sectionMeta.remove();
-  }
-}
-
-/**
  * Decorates all sections in a container element.
  * @param {Element} $main The container element
  */
@@ -221,7 +209,6 @@ export function decorateSections($main) {
   wrapSections($main.querySelectorAll(':scope > div'));
   $main.querySelectorAll(':scope > div.section-wrapper').forEach((section) => {
     section.setAttribute('data-section-status', 'initialized');
-    processSectionMeta(section);
   });
 }
 
@@ -454,6 +441,7 @@ export function setTemplate() {
   const template = getMetadata('template');
   if (!template) return;
   document.body.classList.add(`${template}-template`);
+  loadStyle(`/template/${template}.css`);
 }
 
 /**
@@ -531,6 +519,7 @@ async function loadLazy(doc) {
   const header = doc.querySelector('header > div');
   const main = document.querySelector('main');
   if (main) {
+    await fetchColorLibrary();
     loadBlocks(main);
 
     decorateBlock(header);

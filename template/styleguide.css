@@ -1,0 +1,13 @@
+main > div > div:not([class]){
+  max-width: 83.3%;
+  margin: 0 auto;
+}
+@media screen and (min-width: 1440px) {
+  main > div > div:not([class]){
+    max-width: 1200px;
+  }
+}
+main div img {
+  max-width: 100%;
+}
+
