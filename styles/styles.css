@@ -307,14 +307,6 @@ pre {
   border: 2px solid var(--link-hover-color);
 }
 
-.dark .con-button.blue:hover,
-.dark .con-button.blue:active {
-  color: white;
-  background: var(--link-bright-color);
-  border: 2px solid var(--link-bright-color);
-}
-
-
 .con-button.outline {
   color: #000;
   background: #fff;
