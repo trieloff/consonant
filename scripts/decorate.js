@@ -22,6 +22,12 @@ export function decorateButtons(el) {
   if (buttons.length > 0) {
     buttons[0].closest('p').classList.add('action-area');
   }
+  const links = el.querySelectorAll('a:not([class])');
+  if(links) {
+    links.forEach(link => {
+      link.classList.add('link-underline');
+    });
+  }
 }
 
 export function decorateIcons(el, displayText = true) {
