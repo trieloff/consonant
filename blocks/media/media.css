@@ -281,11 +281,6 @@
   }
   .media.large > .foreground .media-row .image { min-width: 700px; }
 
-  .media .text .product-area {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
   /* *-up */
   .media.three-up .foreground { grid-template-columns: repeat(3, 1fr); }
   .media.four-up .foreground { grid-template-columns: repeat(4, 1fr); }
