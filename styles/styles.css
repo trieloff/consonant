@@ -128,8 +128,8 @@ html {
 body {
   font-family: var(--body-font-family);
   margin: 0;
-  font-size: var(--type-body-m-size);
-  line-height: var(--type-body-m-lh);
+  font-size: var(--type-body-s-size);
+  line-height: var(--type-body-s-lh);
   color: var(--text-color);
   background-color: var(--background-color);
   display: none;
@@ -163,17 +163,6 @@ h6 { font-size: var(--type-heading-xs-size); }
 p, dl, ol, ul, pre, blockquote {
   margin-top: var(--spacing-s);
   margin-bottom: var(--spacing-s);
-}
-
-a:link,
-a:visited,
-a:active,
-a:any-link {
-  color: var(--link-color);
-  text-decoration: none;
-}
-a:hover {
-  color: var(--link-hover-color);
 }
 
 code, pre, samp {
@@ -275,6 +264,24 @@ pre {
   font-weight: var(--type-heading-weight);
   text-transform: uppercase;
   margin: 0;
+}
+
+/* Links */
+a:link,
+a:visited,
+a:active,
+a:any-link {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--link-hover-color);
+}
+
+a.link-underline:link,
+a.link-underline:any-link {
+  text-decoration: underline;
 }
 
 /* Buttons */
