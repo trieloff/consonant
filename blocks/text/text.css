@@ -43,7 +43,7 @@
 }
 
 .text .full-width p:not(:last-child) {
-  margin: 0 0 var(--spacing-ml);
+  margin: 0 0 var(--spacing-m);
 }
 
 .text.vertical .container {
