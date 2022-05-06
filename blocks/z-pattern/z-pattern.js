@@ -27,6 +27,17 @@ async function getOddRowsCount(rows) {
   return zRowsOddCount;
 }
 
+function getColor(str) {
+  const regex = /[^{\{]+(?=}\})/g; // {{value}}
+  const variant = str.match(regex);
+  if (!variant)
+    return str
+  if (variant && window.colorlibrary[variant[0]]){
+    const colorVal = window.colorlibrary[variant[0]];
+    return colorVal;
+  }
+}
+
 const init = async (block) => {
     const children = block.querySelectorAll(':scope > div');
     if (children.length > 1) {
@@ -35,8 +46,9 @@ const init = async (block) => {
         children[0].classList.add('background');
         const bgImg = children[0].querySelector(':scope img');
         if (!bgImg) {
-          block.style.background = children[0].textContent;
-          if(children[0].textContent === '#323232') { block.classList.add('dark') }
+          const bgColor = getColor(children[0].textContent);
+          block.style.background = bgColor;
+          if(bgColor === '#323232') { block.classList.add('dark') }
           children[0].remove();
         }
       }

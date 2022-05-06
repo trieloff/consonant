@@ -279,16 +279,41 @@ pre {
 
 /* Buttons */
 .con-button {
+  align-items: center;
+  border-radius: 15px;
+  border: 2px solid transparent;
   color: #FFF;
-  border: 2px solid;
-  background-color: transparent;
-  border-radius: 16px;
-  display: inline-block;
-  line-height: 28px;
-  padding: 0 14px;
+  display: inline-flex;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 19px;
+  min-height: 26px;
+  padding: 0 13px;
   text-decoration: none;
-  font-size: 14px;
-  font-weight: 600;
+}
+
+.con-button--sizeM {
+  border-radius: 20px;
+  font-size: 17px;
+  line-height: 21px;
+  min-height: 36px;
+  padding: 0 18px;
+}
+
+.con-button--sizeL {
+  border-radius: 25px;
+  font-size: 19px;
+  line-height: 24px;
+  min-height: 46px;
+  padding: 0 23px;
+}
+
+.con-button--sizeXL {
+  border-radius: 30px;
+  font-size: 22px;
+  line-height: 27px;
+  min-height: 56px;
+  padding: 0 28px;
 }
 
 .light .con-button {
