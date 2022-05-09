@@ -23,7 +23,7 @@ export function decorateButtons(el) {
     buttons[0].closest('p').classList.add('action-area');
   }
   const links = el.querySelectorAll('a:not([class])');
-  if(links) {
+  if (links) {
     links.forEach(link => {
       link.classList.add('link-underline');
     });
@@ -86,18 +86,17 @@ export function decorateContent(el, classList) {
   }
 }
 
-export function decorateLayout(elems) {
-  const foreground = elems[elems.length - 1];
-  foreground.classList.add('foreground', 'container');
-  if (elems.length > 1) {
-    const background = elems[0];
+export function decorateBackground(background) {
+  if (background) {
     background.classList.add('background');
     if (!background.querySelector(':scope img')) {
-      background.children[0].style.display = 'none';
-      background.setAttribute('style', `background: ${background.textContent}`);
+      const is_hex = background.textContent[0] == "#";
+      const lib_color = !is_hex && window.colorlibrary[background.textContent];
+      const bg_color = !is_hex && lib_color ? lib_color : background.textContent;
+      background.setAttribute('style', `background: ${bg_color ?? 'transparent'}`);
+      background.children[0].remove();
     }
   }
-  return foreground;
 }
 
 export function getBlockSize(el) {
