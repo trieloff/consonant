@@ -14,7 +14,14 @@
 * Aside - v0.0.1
 */
 
-import { decorateButtons, decorateContent, decorateIcons, decorateLayout } from "../../scripts/decorate.js";
+import { decorateBackground, decorateButtons, decorateContent, decorateIcons } from "../../scripts/decorate.js";
+
+function decorateLayout(elems) {
+    const foreground = elems[elems.length - 1];
+    foreground.classList.add('foreground', 'container');
+    if (elems.length > 1) decorateBackground(elems[0]);
+    return foreground;
+}
 
 export default function init(el) {
     const children = el.querySelectorAll(':scope > div');
