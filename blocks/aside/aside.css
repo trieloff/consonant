@@ -234,8 +234,7 @@
     }
 
     .aside.split .background img {
-        max-width: 56.9010417%;
-        width: 100vw;
+        width: 60.5vw;
         position: absolute;
         right: 0;
         object-fit: cover;
@@ -267,12 +266,11 @@
 
     /* Split - Half */
     .aside.split.half .background img {
-        max-width: 50vw;
+        width: 50vw;
     }
 
     .aside.split.half .foreground.container .text {
         flex: 0 0 41.72%;
-        max-width: 500px;
     }
 
     .aside.split.right .foreground.container {
@@ -355,10 +353,6 @@
 
     /* Split */
 
-    .aside.split .background img {
-        max-width: 60.4166667%;
-    }
-
     .aside.split .foreground.container .text {
         flex: 0 0 300px;
         padding: var(--spacing-xxl) 0;
@@ -368,6 +362,10 @@
         flex: 0 0 70%;
         max-width: none;
         object-fit: cover;
+    }
+
+    .aside.split.half .foreground.container .text {
+        max-width: 500px;
     }
 
     /* Augmented Image */
