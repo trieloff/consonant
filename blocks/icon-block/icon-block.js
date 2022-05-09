@@ -14,20 +14,12 @@
 * Icon Block - v0.0.1
 */
 
-import { decorateButtons, decorateContent, decorateIcons } from "../../scripts/decorate.js";
+import { decorateBackground, decorateButtons, decorateContent, decorateIcons } from "../../scripts/decorate.js";
 
 export default function init(el) {
     const children = el.querySelectorAll(':scope > div');
     if (children.length > 1) {
-        if (children[0].childNodes.length == 1) {
-            children[0].classList.add('background');
-            const bgImg = children[0].querySelector(':scope img');
-            if (!bgImg) {
-                const bgColor = children[0].textContent;
-                el.style.background = bgColor;
-                children[0].remove();
-            }
-        }
+        if (children[0].childNodes.length == 1) decorateBackground(children[0]);
 
         const container = document.createElement('div');
         container.classList.add('foreground', 'container');
