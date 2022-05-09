@@ -235,6 +235,7 @@
 
     .aside.split .background img {
         width: 60.5vw;
+        max-width: 1396px;
         position: absolute;
         right: 0;
         object-fit: cover;
@@ -267,6 +268,7 @@
     /* Split - Half */
     .aside.split.half .background img {
         width: 50vw;
+        max-width: 1396px;
     }
 
     .aside.split.half .foreground.container .text {
