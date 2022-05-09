@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-import { decorateButtons, decorateContent } from '../../scripts/decorate.js';
+import { decorateButtons, decorateContent, decorateBackground } from '../../scripts/decorate.js';
 
 /*
  * Text Block - v0.0.1
@@ -20,10 +20,7 @@ export default function init(el) {
   const children = el.querySelectorAll(':scope > div');
   const [background, ...rows] = children;
   // basic background handling
-  if (!background.querySelector(':scope img')) {
-    el.setAttribute('style', `background: ${background.textContent}`);
-    background.remove();
-  }
+  decorateBackground(background);
 
   // create foreground
   const container = document.createElement('div');
