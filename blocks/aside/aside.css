@@ -40,7 +40,6 @@
 }
 
 .aside .foreground.container {
-    min-height: 420px;
     display: flex;
     position: relative;
     align-items: baseline;
@@ -272,7 +271,16 @@
     }
 
     .aside.split.half .foreground.container .text {
-        flex: 0 0 44%;
+        flex: 0 0 41.72%;
+        max-width: 500px;
+    }
+
+    .aside.split.right .foreground.container {
+        flex-direction: row-reverse;
+    }
+
+    .aside.split.right .background img {
+        left: 0;
     }
 
     /* Augmented Image */
@@ -310,6 +318,7 @@
     }
 
     .aside .foreground.container {
+        min-height: 420px;
         width: var(--grid-container-width);
     }
 
