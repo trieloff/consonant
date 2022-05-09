@@ -14,19 +14,14 @@
  * Media - v0.0.1
  */
 
-import { decorateText, decorateIcons, decorateButtons, getBlockSize } from "../../scripts/decorate.js";
+import {decorateText, decorateIcons, decorateButtons, getBlockSize, decorateBlockBg} from "../../scripts/decorate.js";
 
 const init = async (block) => {
     const toggleClassStr = 'media-reverse-mobile';
     const children = block.querySelectorAll(':scope > div');
     if (children.length > 1) {
       if(children[0].childNodes.length === 1) {
-        children[0].classList.add('background');
-        const bgImg = children[0].querySelector(':scope img');
-        if (!bgImg) {
-          block.style.background = children[0].textContent;
-          children[0].remove();
-        }
+        decorateBlockBg(block, children[0]);
       }
     }
 

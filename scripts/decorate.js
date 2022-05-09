@@ -72,6 +72,25 @@ export function decorateText(el, size) {
   }
 }
 
+// check if hex or has color library value
+export function getLibColor(str) {
+  const is_hex = str == "#";
+  const lib_color = !is_hex && window.colorlibrary[str];
+  return !is_hex && lib_color ? lib_color : str;
+}
+
+// decorate background with color lib
+export function decorateBlockBg(block, node) {
+  node.classList.add('background');
+  if (!node.querySelector(':scope img')) {
+    const bgColor = getLibColor(node.textContent);
+    block.style.background = bgColor;
+    const darkColors = ['#323232', '#000000'];
+    if(darkColors.includes(bgColor)) block.classList.add('dark');
+    node.remove();
+  }
+}
+
 // decorate text content in block by passing array of classes [ detail, heading, body ]
 export function decorateContent(el, classList) {
   if (el && classList.length == 3) {

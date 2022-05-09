@@ -14,8 +14,8 @@
  * Z-Pattern - v0.0.1
  */
 
-import { decorateBlock, loadBlock } from '../../scripts/scripts.js';
-import { getBlockSize } from "../../scripts/decorate.js";
+import { decorateBlock, loadBlock  } from '../../scripts/scripts.js';
+import { getBlockSize, decorateBlockBg } from "../../scripts/decorate.js";
 
 async function getOddRowsCount(rows) {
   let zRowsOddCount = 0;
@@ -27,30 +27,12 @@ async function getOddRowsCount(rows) {
   return zRowsOddCount;
 }
 
-function getColor(str) {
-  const regex = /[^{\{]+(?=}\})/g; // {{value}}
-  const variant = str.match(regex);
-  if (!variant)
-    return str
-  if (variant && window.colorlibrary[variant[0]]){
-    const colorVal = window.colorlibrary[variant[0]];
-    return colorVal;
-  }
-}
-
 const init = async (block) => {
     const children = block.querySelectorAll(':scope > div');
     if (children.length > 1) {
       // If first two rows are single column this indicates a bg decorator row is present
       if (children[0].childNodes.length === 1 && children[1].childNodes.length === 1) {
-        children[0].classList.add('background');
-        const bgImg = children[0].querySelector(':scope img');
-        if (!bgImg) {
-          const bgColor = getColor(children[0].textContent);
-          block.style.background = bgColor;
-          if(bgColor === '#323232') { block.classList.add('dark') }
-          children[0].remove();
-        }
+        decorateBlockBg(block, children[0]);
       }
     }
     const header = block.querySelector('h1, h2, h3, h4, h5, h6');
