@@ -25,8 +25,8 @@ describe('media', () => {
     });
   });
   describe('dark media large', () => {
-    it('has a heading-L', () => {
-      const heading = medias[1].querySelector('.heading-L');
+    it('has a heading-XL', () => {
+      const heading = medias[1].querySelector('.heading-XL');
       expect(heading).to.exist;
     });
     it('has a supporting bg color', () => {
