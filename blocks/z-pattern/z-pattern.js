@@ -14,56 +14,54 @@
  * Z-Pattern - v0.0.1
  */
 
-import { decorateBlock, loadBlock  } from '../../scripts/scripts.js';
-import { getBlockSize, decorateBlockBg } from "../../scripts/decorate.js";
+import { decorateBlock, loadBlock } from '../../scripts/scripts.js';
+import { getBlockSize, decorateBlockBg } from '../../scripts/decorate.js';
 
-async function getOddRowsCount(rows) {
+function getOddRowsCount(rows) {
   let zRowsOddCount = 0;
-  for await (const row of rows) {
+  rows.forEach((row) => {
     const firstCol = row.querySelector(':scope > div > div:first-of-type');
     const rowIsOdd = firstCol.querySelector('h1, h2, h3, h4, h5, h6');
-    if (rowIsOdd) zRowsOddCount++;
-  }
+    if (rowIsOdd) zRowsOddCount += 1;
+  });
   return zRowsOddCount;
 }
 
-const init = async (block) => {
-    const children = block.querySelectorAll(':scope > div');
-    if (children.length > 1) {
-      // If first two rows are single column this indicates a bg decorator row is present
-      if (children[0].childNodes.length === 1 && children[1].childNodes.length === 1) {
-        decorateBlockBg(block, children[0]);
-      }
+export default function init(el) {
+  const children = el.querySelectorAll(':scope > div');
+  if (children.length > 1) {
+    // If first two rows are single column this indicates a bg decorator row is present
+    if (children[0].childNodes.length === 1 && children[1].childNodes.length === 1) {
+      decorateBlockBg(el, children[0]);
     }
-    const header = block.querySelector('h1, h2, h3, h4, h5, h6');
-    if (header) {
-        const headingRow = header.parentElement;
-        headingRow.classList.add('heading-row');
-        headingRow.parentElement.classList.add('container');
-        const blockIsLarge = block.classList.contains('large');
-        const headerClass = blockIsLarge ? 'heading-XL' : 'heading-L';
-        header.classList.add(headerClass, 'headline');
-    }
-    const size = getBlockSize(block);
-    const zRows = block.querySelectorAll(':scope > div:not([class])');
-    zRows.forEach((mediaBlock) => {
-        mediaBlock.classList.add('media');
-        decorateBlock(mediaBlock);
-        const mediaRow = document.createElement('div');
-        const children = mediaBlock.querySelectorAll(':scope > div');
-        children.forEach((child) => {
-          mediaRow.appendChild(child);
-        });
-        mediaBlock.classList.add(size);
-        mediaBlock.appendChild(mediaRow);
-        loadBlock(mediaBlock);
+  }
+  const header = el.querySelector('h1, h2, h3, h4, h5, h6');
+  if (header) {
+    const headingRow = header.parentElement;
+    headingRow.classList.add('heading-row');
+    headingRow.parentElement.classList.add('container');
+    const blockIsLarge = el.classList.contains('large');
+    const headerClass = blockIsLarge ? 'heading-XL' : 'heading-L';
+    header.classList.add(headerClass, 'headline');
+  }
+  const size = getBlockSize(el);
+  const zRows = el.querySelectorAll(':scope > div:not([class])');
+  zRows.forEach((mediaBlock) => {
+    mediaBlock.classList.add('media');
+    decorateBlock(mediaBlock);
+    const mediaRow = document.createElement('div');
+    const blockChildren = mediaBlock.querySelectorAll(':scope > div');
+    blockChildren.forEach((child) => {
+      mediaRow.appendChild(child);
     });
-    const zRowsOddCount = await getOddRowsCount(zRows);
-    if(zRowsOddCount === 0) {
-      zRows.forEach((row, i) => {
-        if ( i % 2 ) row.classList.add('media--reversed');
-      });
-    }
+    mediaBlock.classList.add(size);
+    mediaBlock.appendChild(mediaRow);
+    loadBlock(mediaBlock);
+  });
+  const zRowsOddCount = getOddRowsCount(zRows);
+  if (zRowsOddCount === 0) {
+    zRows.forEach((row, i) => {
+      if (i % 2) row.classList.add('media--reversed');
+    });
+  }
 }
-
-export default init;

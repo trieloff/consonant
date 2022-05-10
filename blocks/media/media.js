@@ -14,44 +14,35 @@
  * Media - v0.0.1
  */
 
-import {decorateText, decorateIcons, decorateButtons, getBlockSize, decorateBlockBg} from "../../scripts/decorate.js";
+import { decorateText, decorateIcons, decorateButtons, getBlockSize, decorateBackground } from '../../scripts/decorate.js';
 
-const init = async (block) => {
-    const toggleClassStr = 'media-reverse-mobile';
-    const children = block.querySelectorAll(':scope > div');
-    if (children.length > 1) {
-      if(children[0].childNodes.length === 1) {
-        decorateBlockBg(block, children[0]);
-      }
+export default function init(el) {
+  const toggleClassStr = 'media-reverse-mobile';
+  const children = el.querySelectorAll(':scope > div');
+  if (children.length > 1) {
+    if (children[0].childElementCount === 1) {
+      decorateBackground(children[0]);
     }
+  }
+  const size = getBlockSize(el);
+  const media = el.querySelectorAll(':scope > div:not([class])');
 
-    const zPattern = block.classList.contains('z-pattern');
-    const size = getBlockSize(block);
-    const media = block.querySelectorAll(':scope > div:not([class])');
-
-    const container = document.createElement('div');
-    container.classList.add('container', 'foreground');
-    media.forEach((row, i) => {
-        if(zPattern && i % 2) {
-          row.classList.add(toggleClassStr);
-        }
-        row.classList.add(`media-row`);
-        const text = row.querySelector('h1, h2, h3, h4, h5, h6').closest('div');
-        text.classList.add('text');
-        const image = row.querySelector(':scope > div:not([class])');
-        if (image) {
-          image.classList.add('image');
-        }
-        decorateText(text, size);
-        decorateIcons(text);
-        decorateButtons(text);
-        container.append(row);
-    });
-    block.append(container);
-    const mediaRowReversed  = block.querySelector(':scope > .foreground > .media-row > div').classList.contains('text');
-    if(mediaRowReversed) {
-      block.classList.add(toggleClassStr);
+  const container = document.createElement('div');
+  container.classList.add('container', 'foreground');
+  media.forEach((row) => {
+    row.classList.add('media-row');
+    const text = row.querySelector('h1, h2, h3, h4, h5, h6').closest('div');
+    if (text) text.classList.add('text');
+    const image = row.querySelector(':scope > div:not([class])');
+    if (image) {
+      image.classList.add('image');
     }
+    decorateText(text, size);
+    decorateIcons(text);
+    decorateButtons(text);
+    container.append(row);
+  });
+  el.append(container);
+  const mediaRowReversed = el.querySelector(':scope > .foreground > .media-row > div').classList.contains('text');
+  if (mediaRowReversed) el.classList.add(toggleClassStr);
 }
-
-export default init;

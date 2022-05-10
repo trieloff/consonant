@@ -9,27 +9,29 @@ import { cleanVariations } from '../../../scripts/scripts.js';
 const mock = await readFile({ path: './media.mock.html' });
 document.body.innerHTML = mock;
 cleanVariations(document.body);
-
 describe('media', () => {
   const medias = document.querySelectorAll('.media');
   medias.forEach((media) => {
     init(media);
   });
-  describe('default media', () => {
-    it('has a heading', () => {
-      const heading = medias[0].querySelector('.heading-XL');
+  describe('default media medium', () => {
+    it('has a heading-M', () => {
+      const heading = medias[0].querySelector('.heading-M');
       expect(heading).to.exist;
     });
-
-    it('has a background image', () => {
-      const image = medias[0].querySelector('.background img');
+    it('has a supporting image', () => {
+      const image = medias[0].querySelector('.foreground .image img');
       expect(image).to.exist;
     });
-
-    it('doesnt have detail', () => {
-      const detail = medias[0].querySelector('.detail-M');
-      expect(detail).to.not.exist;
+  });
+  describe('dark media large', () => {
+    it('has a heading-L', () => {
+      const heading = medias[1].querySelector('.heading-L');
+      expect(heading).to.exist;
     });
-
+    it('has a supporting bg color', () => {
+      const isDark = medias[1].classList.contains('dark');
+      expect(isDark).to.exist;
+    });
   });
 });
