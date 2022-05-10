@@ -11,7 +11,7 @@ document.body.innerHTML = mock;
 cleanVariations(document.body);
 
 describe('text block', () => {
-  const textBlocks = document.querySelectorAll('.marquee');
+  const textBlocks = document.querySelectorAll('.text');
   textBlocks.forEach((textBlock) => {
     init(textBlock);
   });
