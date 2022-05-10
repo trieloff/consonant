@@ -89,12 +89,12 @@ export function decorateContent(el, classList) {
 export function decorateBackground(background) {
   if (background) {
     background.classList.add('background');
-    if (!background.querySelector(':scope img')) {
+    if (!background.querySelector(':scope img') && window.colorlibrary) {
       const isHex = background.textContent[0] === '#';
       const libColor = !isHex && window.colorlibrary[background.textContent];
       const bgColor = !isHex && libColor ? libColor : background.textContent;
       if (bgColor) background.style.background = bgColor;
-      // background.setAttribute('style', `background: ${bg_color ?? 'transparent'}`);
+      // background.setAttribute('style', `background: ${bgColor ?? 'transparent'}`);
       background.children[0].remove();
     }
   }
