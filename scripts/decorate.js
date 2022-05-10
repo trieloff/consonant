@@ -24,7 +24,7 @@ export function decorateButtons(el) {
   }
   const links = el.querySelectorAll('a:not([class])');
   if (links) {
-    links.forEach(link => {
+    links.forEach((link) => {
       link.classList.add('link-underline');
     });
   }
@@ -35,9 +35,9 @@ export function decorateIcons(el, displayText = true) {
   const placeholders = el.textContent.match(regex);
   placeholders?.forEach((str) => {
     // todo: get this placeholder data from docs
-    const svg = `<img width="40" alt="Adobe Illustrator CC icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Adobe_Illustrator_CC_icon.svg/512px-Adobe_Illustrator_CC_icon.svg.png">`;
-    const url = `#`;
-    el.innerHTML = el.innerHTML.replace(`{{${str}}}`, `<a class="body-S icon ${str}" href="${url}">${svg} ${displayText ? str.split('-')[1] : ""}</a>`);
+    const svg = '<img width="40" alt="Adobe Illustrator CC icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Adobe_Illustrator_CC_icon.svg/512px-Adobe_Illustrator_CC_icon.svg.png">';
+    const url = '#';
+    el.innerHTML = el.innerHTML.replace(`{{${str}}}`, `<a class="body-S icon ${str}" href="${url}">${svg} ${displayText ? str.split('-')[1] : ''}</a>`);
   });
   const icons = el.querySelectorAll('.icon');
   if (icons.length > 0) {
@@ -73,7 +73,7 @@ export function decorateText(el, size) {
 
 // decorate text content in block by passing array of classes [ detail, heading, body ]
 export function decorateContent(el, classList) {
-  if (el && classList.length == 3) {
+  if (el && classList.length === 3) {
     const text = el.querySelector('h1, h2, h3, h4, h5, h6')?.closest('div');
     text?.classList.add('text');
     text?.querySelector(':scope img')?.closest('p')?.classList.add('product-area');
@@ -89,11 +89,11 @@ export function decorateContent(el, classList) {
 export function decorateBackground(background) {
   if (background) {
     background.classList.add('background');
-    if (!background.querySelector(':scope img')) {
-      const is_hex = background.textContent[0] == "#";
-      const lib_color = !is_hex && window.colorlibrary[background.textContent];
-      const bg_color = !is_hex && lib_color ? lib_color : background.textContent;
-      background.setAttribute('style', `background: ${bg_color ?? 'transparent'}`);
+    if (!background.querySelector(':scope img') && window.colorlibrary) {
+      const isHex = background.textContent[0] === '#';
+      const libColor = !isHex && window.colorlibrary[background.textContent];
+      const bgColor = !isHex && libColor ? libColor : background.textContent;
+      background.setAttribute('style', `background: ${bgColor ?? 'transparent'}`);
       background.children[0].remove();
     }
   }
@@ -102,11 +102,12 @@ export function decorateBackground(background) {
 export function getBlockSize(el) {
   if (el.classList.contains('small')) {
     return 'small';
-  } else if (el.classList.contains('medium')) {
-    return 'medium';
-  } else if (el.classList.contains('large')) {
-    return 'large';
-  } else {
+  }
+  if (el.classList.contains('medium')) {
     return 'medium';
   }
+  if (el.classList.contains('large')) {
+    return 'large';
+  }
+  return 'medium';
 }
