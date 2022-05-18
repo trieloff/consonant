@@ -17,7 +17,6 @@
 import { decorateText, decorateIcons, decorateButtons, getBlockSize, decorateBackground } from '../../scripts/decorate.js';
 
 export default function init(el) {
-  const toggleClassStr = 'media-reverse-mobile';
   const children = el.querySelectorAll(':scope > div');
   if (children.length > 1) {
     if (children[0].childElementCount === 1) {
@@ -44,5 +43,5 @@ export default function init(el) {
   });
   el.append(container);
   const mediaRowReversed = el.querySelector(':scope > .foreground > .media-row > div').classList.contains('text');
-  if (mediaRowReversed) el.classList.add(toggleClassStr);
+  if (mediaRowReversed) el.classList.add('media-reverse-mobile');
 }
