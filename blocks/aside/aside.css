@@ -17,6 +17,18 @@
     margin: 0;
 }
 
+.aside.small {
+    min-height: 420px;
+}
+
+.aside.medium {
+    min-height: 560px;
+}
+
+.aside.large {
+    min-height: 700px;
+}
+
 /* Standard */
 
 .aside .background {
@@ -304,19 +316,6 @@
 @media screen and (min-width: 1200px) {
 
     /* Standard */
-
-    .aside.small {
-        min-height: 420px;
-    }
-
-    .aside.medium {
-        min-height: 560px;
-    }
-
-    .aside.large {
-        min-height: 700px;
-    }
-
     .aside .foreground.container {
         min-height: 420px;
         width: var(--grid-container-width);
