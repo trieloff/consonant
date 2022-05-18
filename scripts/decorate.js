@@ -89,9 +89,9 @@ export function decorateContent(el, classList) {
 export function decorateBackground(background) {
   if (background) {
     background.classList.add('background');
-    if (!background.querySelector(':scope img') && window.colorlibrary) {
+    if (!background.querySelector(':scope img') && background.textContent) {
       const isHex = background.textContent[0] === '#';
-      const libColor = !isHex && window.colorlibrary[background.textContent];
+      const libColor = !isHex && window.colorlibrary && window.colorlibrary[background.textContent];
       const bgColor = !isHex && libColor ? libColor : background.textContent;
       background.setAttribute('style', `background: ${bgColor ?? 'transparent'}`);
       background.children[0].remove();
