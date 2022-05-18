@@ -29,11 +29,5 @@ describe('aside', () => {
             const body = asides[0].querySelector('.body-S');
             expect(body).to.exist;
         });
-
-        it('has content on the correct side', () => {
-            const sides = asides[0].querySelectorAll('.foreground > div');
-            expect(sides[0].className).to.equal('text');
-            expect(sides[1].className).to.equal('image');
-        });
     });
 });
