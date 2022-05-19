@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 /* global describe it */
 
-import init from '../../../blocks/marquee/marquee.js';
+import init from '../../../blocks/icon-block/icon-block.js';
 import { readFile } from '@web/test-runner-commands';
 import { expect } from '@esm-bundle/chai';
 import { cleanVariations } from '../../../scripts/scripts.js';
@@ -14,17 +14,18 @@ describe('icon blocks', () => {
     const blocks = document.querySelectorAll('.icon-block');
     blocks.forEach(block => {
         init(block);
-        describe('icon block', () => {
-            const children = document.querySelectorAll('.text');
+        const isVertical = block.classList.contains('vertical');
+        describe(`icon block ${isVertical ? "vertical" : "full-width"}`, () => {
+            const children = block.querySelectorAll('.text');
             if (children.length) {
                 children.forEach(blk => {
                     it('has an icon', () => {
-                        const icon = blk.querySelector('.detail-M');
+                        const icon = blk.querySelector('.product-area');
                         expect(icon).to.exist;
                     });
 
                     it('has a heading', () => {
-                        const heading = blk.querySelector('.heading-XL');
+                        const heading = blk.querySelector(isVertical ? '.heading-S' : '.heading-XL');
                         expect(heading).to.exist;
                     });
 
@@ -32,9 +33,8 @@ describe('icon blocks', () => {
                         const body = blk.querySelector('.body-M');
                         expect(body).to.exist;
                     });
-                })
+                });
             }
-
         })
-    })
+    });
 })

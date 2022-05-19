@@ -19,16 +19,17 @@ import { decorateBackground, decorateButtons, decorateContent, decorateIcons } f
 export default function init(el) {
     const children = el.querySelectorAll(':scope > div');
     if (children.length > 1) {
-        if (children[0].childNodes.length == 1) decorateBackground(children[0]);
+        if (children[0].childNodes.length) decorateBackground(children[0]);
 
         const container = document.createElement('div');
         container.classList.add('foreground', 'container');
-        el.appendChild(container)
+        el.appendChild(container);
 
-        const vertical = el.querySelectorAll(':scope > div:not([class])');
+        const blocks = el.querySelectorAll(':scope > div:not([class])');
         const headingClass = el.classList.contains('vertical') ? 'heading-S' : 'heading-XL';
         const contentClasses = ['product-area', headingClass, 'body-M'];
-        [...vertical].forEach(block => {
+
+        [...blocks].forEach(block => {
             decorateContent(block, contentClasses);
             decorateButtons(block);
             container.insertAdjacentElement('beforeEnd', block.children[0]);
