@@ -34,10 +34,16 @@ export function decorateIcons(el, displayText = true) {
   const regex = /[^{{]+(?=}})/g; // {{value}}
   const placeholders = el.textContent.match(regex);
   placeholders?.forEach((str) => {
-    // todo: get this placeholder data from docs
-    const svg = '<img width="40" alt="Adobe Illustrator CC icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Adobe_Illustrator_CC_icon.svg/512px-Adobe_Illustrator_CC_icon.svg.png">';
-    const url = '#';
-    el.innerHTML = el.innerHTML.replace(`{{${str}}}`, `<a class="body-S icon ${str}" href="${url}">${svg} ${displayText ? str.split('-')[1] : ''}</a>`);
+    if (window.iconLibrary) {
+      const icon = window.iconLibrary[str];
+      if (icon) {
+        const svg = `<img width="40" alt="${icon[0]}" src="${icon[1]}">`;
+        const anchor = `<a class="body-S icon ${str}" href="${icon[2]}">${svg} ${displayText ? icon[0] : ''}</a>`;
+        el.innerHTML = el.innerHTML.replace(`{{${str}}}`, anchor);
+      } else {
+        el.innerHTML = el.innerHTML.replace(`{{${str}}}`, '');
+      }
+    }
   });
   const icons = el.querySelectorAll('.icon');
   if (icons.length > 0) {
