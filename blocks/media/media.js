@@ -14,7 +14,7 @@
  * Media - v0.0.1
  */
 
-import { decorateText, getBlockSize, decorateBackground } from '../../scripts/decorate.js';
+import { decorateBackground, decorateText, getBlockSize } from '../../scripts/decorate.js';
 
 export default function init(el) {
   const children = el.querySelectorAll(':scope > div');

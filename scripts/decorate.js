@@ -31,7 +31,7 @@ export function decorateButtons(el) {
 }
 
 export function decorateIcons(el, displayText = true) {
-  const regex = /\{{[^)]*\}}/g; // {{value}}
+  const regex = /[^{{]+(?=}})/g; // {{value}}
   const placeholders = el.textContent.match(regex);
   placeholders?.forEach((str) => {
     // todo: get this placeholder data from docs

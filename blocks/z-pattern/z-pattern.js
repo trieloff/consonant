@@ -15,7 +15,7 @@
  */
 
 import { decorateBlock, loadBlock } from '../../scripts/scripts.js';
-import { getBlockSize, decorateBlockBg, decorateHeadline } from '../../scripts/decorate.js';
+import { decorateBlockBg, decorateHeadline, getBlockSize } from '../../scripts/decorate.js';
 
 function getOddRowsCount(rows) {
   let zRowsOddCount = 0;
