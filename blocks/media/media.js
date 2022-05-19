@@ -32,6 +32,7 @@ export default function init(el) {
     const header = row.querySelector('h1, h2, h3, h4, h5, h6');
     if (header) {
       const text = header.closest('div');
+      text.classList.add('text');
       decorateText(text, size);
     }
     const image = row.querySelector(':scope > div:not([class])');
