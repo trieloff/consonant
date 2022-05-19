@@ -15,7 +15,7 @@
  */
 
 import { decorateBlock, loadBlock } from '../../scripts/scripts.js';
-import { getBlockSize, decorateBlockBg } from '../../scripts/decorate.js';
+import { getBlockSize, decorateBlockBg, decorateHeadline } from '../../scripts/decorate.js';
 
 function getOddRowsCount(rows) {
   let zRowsOddCount = 0;
@@ -29,22 +29,31 @@ function getOddRowsCount(rows) {
 
 export default function init(el) {
   const children = el.querySelectorAll(':scope > div');
+  const size = getBlockSize(el);
   if (children.length > 1) {
-    // If first two rows are single column this indicates a bg decorator row is present
-    if (children[0].childNodes.length === 1 && children[1].childNodes.length === 1) {
-      decorateBlockBg(el, children[0]);
+    let numberOfSingleColRows = 0;
+    for (let i = 0; i < children.length; i += 1) {
+      if (children[i].childNodes.length === 1) {
+        numberOfSingleColRows += 1;
+      }
+    }
+    // 2 single rows (bg && headline)
+    if (numberOfSingleColRows === 2) {
+      const rowBg = children[0].textContent != null;
+      const rowHeader = children[1].querySelector('h1, h2, h3, h4, h5, h6');
+      if (rowBg) decorateBlockBg(el, children[0]);
+      if (rowHeader) decorateHeadline(el, rowHeader, size);
+    }
+    // 1 single row (bg || headline)
+    if (numberOfSingleColRows === 1) {
+      const rowHeader = children[0].querySelector('h1, h2, h3, h4, h5, h6');
+      if (!rowHeader) {
+        decorateBlockBg(el, children[0]);
+      } else {
+        decorateHeadline(el, rowHeader, size);
+      }
     }
   }
-  const header = el.querySelector('h1, h2, h3, h4, h5, h6');
-  if (header) {
-    const headingRow = header.parentElement;
-    headingRow.classList.add('heading-row');
-    headingRow.parentElement.classList.add('container');
-    const blockIsLarge = el.classList.contains('large');
-    const headerClass = blockIsLarge ? 'heading-XL' : 'heading-L';
-    header.classList.add(headerClass, 'headline');
-  }
-  const size = getBlockSize(el);
   const zRows = el.querySelectorAll(':scope > div:not([class])');
   zRows.forEach((mediaBlock) => {
     mediaBlock.classList.add('media');

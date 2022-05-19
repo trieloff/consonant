@@ -22,10 +22,22 @@ describe('z-pattern', () => {
     });
   });
 
-  describe('Large z-pattern reversed 2nd row', () => {
+  describe('large z-pattern', () => {
     it('has a heading-XL', () => {
       const heading = zPatterns[1].querySelector('.heading-XL');
       expect(heading).to.exist;
+    });
+
+    it('doesnt have a detail-M', () => {
+      const detailM = zPatterns[1].querySelector('.detail-M');
+      expect(detailM).to.not.exist;
+    });
+  });
+
+  describe('z-pattern', () => {
+    it('does not have heading row', () => {
+      const headingRow = zPatterns[2].querySelector('.heading-row');
+      expect(headingRow).to.not.exist;
     });
   });
 });

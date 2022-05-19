@@ -69,6 +69,8 @@ export function decorateText(el, size) {
       heading.previousElementSibling.classList.add('detail-L');
     }
   }
+  decorateIcons(el);
+  decorateButtons(el);
 }
 
 // decorate text content in block by passing array of classes [ detail, heading, body ]
@@ -102,7 +104,7 @@ export function decorateBackground(background) {
 
 // check if hex or has color library value
 export function getLibColor(str) {
-  const isHex = str === '#';
+  const isHex = str[0] === '#';
   const libColor = !isHex && window.colorlibrary[str];
   return !isHex && libColor ? libColor : str;
 }
@@ -110,13 +112,21 @@ export function getLibColor(str) {
 // decorate background with color lib
 export function decorateBlockBg(block, node) {
   node.classList.add('background');
-  if (!node.querySelector(':scope img')) {
+  if (!node.querySelector(':scope img') && window.colorlibrary) {
     const bgColor = getLibColor(node.textContent);
     block.style.background = bgColor;
     const darkColors = ['#323232', '#000000'];
     if (darkColors.includes(bgColor)) block.classList.add('dark');
     node.remove();
   }
+}
+
+export function decorateHeadline(el, header, size) {
+  const headingRow = header.parentElement;
+  headingRow.classList.add('heading-row');
+  headingRow.parentElement.classList.add('container');
+  const headerClass = (size === 'large') ? 'heading-XL' : 'heading-L';
+  header.classList.add(headerClass, 'headline');
 }
 
 export function getBlockSize(el) {

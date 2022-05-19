@@ -14,7 +14,7 @@
  * Media - v0.0.1
  */
 
-import { decorateText, decorateIcons, decorateButtons, getBlockSize, decorateBackground } from '../../scripts/decorate.js';
+import { decorateText, getBlockSize, decorateBackground } from '../../scripts/decorate.js';
 
 export default function init(el) {
   const children = el.querySelectorAll(':scope > div');
@@ -25,20 +25,17 @@ export default function init(el) {
   }
   const size = getBlockSize(el);
   const media = el.querySelectorAll(':scope > div:not([class])');
-
   const container = document.createElement('div');
   container.classList.add('container', 'foreground');
   media.forEach((row) => {
     row.classList.add('media-row');
-    const text = row.querySelector('h1, h2, h3, h4, h5, h6').closest('div');
-    if (text) text.classList.add('text');
-    const image = row.querySelector(':scope > div:not([class])');
-    if (image) {
-      image.classList.add('image');
+    const header = row.querySelector('h1, h2, h3, h4, h5, h6');
+    if (header) {
+      const text = header.closest('div');
+      decorateText(text, size);
     }
-    decorateText(text, size);
-    decorateIcons(text);
-    decorateButtons(text);
+    const image = row.querySelector(':scope > div:not([class])');
+    if (image) image.classList.add('image');
     container.append(row);
   });
   el.append(container);
