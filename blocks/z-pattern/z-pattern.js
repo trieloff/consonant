@@ -14,8 +14,9 @@
  * Z-Pattern - v0.0.1
  */
 
-import { decorateBlock, loadBlock } from '../../scripts/scripts.js';
+import { decorateBlock } from '../../scripts/scripts.js';
 import { decorateBlockBg, decorateHeadline, getBlockSize } from '../../scripts/decorate.js';
+import media from '../media/media.js';
 
 function getOddRowsCount(rows) {
   let zRowsOddCount = 0;
@@ -27,45 +28,38 @@ function getOddRowsCount(rows) {
   return zRowsOddCount;
 }
 
+function getChildSingleRowCount(children) {
+  let length = 0;
+  for (let i = 0; i < children.length; i += 1) {
+    if (children[i].children.length === 1) {
+      length += 1;
+    }
+  }
+  return length;
+}
+
 export default function init(el) {
   const children = el.querySelectorAll(':scope > div');
   const size = getBlockSize(el);
-  if (children.length > 1) {
-    let numberOfSingleColRows = 0;
-    for (let i = 0; i < children.length; i += 1) {
-      if (children[i].childNodes.length === 1) {
-        numberOfSingleColRows += 1;
-      }
-    }
-    // 2 single rows (bg && headline)
-    if (numberOfSingleColRows === 2) {
-      const rowBg = children[0].textContent != null;
-      const rowHeader = children[1].querySelector('h1, h2, h3, h4, h5, h6');
-      if (rowBg) decorateBlockBg(el, children[0]);
-      if (rowHeader) decorateHeadline(el, rowHeader, size);
-    }
-    // 1 single row (bg || headline)
-    if (numberOfSingleColRows === 1) {
-      const rowHeader = children[0].querySelector('h1, h2, h3, h4, h5, h6');
-      if (!rowHeader) {
-        decorateBlockBg(el, children[0]);
-      } else {
-        decorateHeadline(el, rowHeader, size);
-      }
-    }
-  }
+  const singleRowCount = getChildSingleRowCount(children);
+  // 1 single row  (bg || headline)
+  // 2 single rows (bg && headline)
+  const headerIndex = singleRowCount === 2 ? 1 : 0;
+  const rowHeader = children[headerIndex].querySelector('h1, h2, h3, h4, h5, h6');
+  const rowBg = children[0].textContent != null;
+  if (rowHeader && singleRowCount) decorateHeadline(rowHeader, size);
+  if (rowBg && singleRowCount && rowHeader != null) decorateBlockBg(el, children[0]);
   const zRows = el.querySelectorAll(':scope > div:not([class])');
-  zRows.forEach((mediaBlock) => {
-    mediaBlock.classList.add('media');
-    decorateBlock(mediaBlock);
+  zRows.forEach((row) => {
+    row.classList.add('media');
+    decorateBlock(row);
     const mediaRow = document.createElement('div');
-    const blockChildren = mediaBlock.querySelectorAll(':scope > div');
+    const blockChildren = row.querySelectorAll(':scope > div');
     blockChildren.forEach((child) => {
       mediaRow.appendChild(child);
     });
-    mediaBlock.classList.add(size);
-    mediaBlock.appendChild(mediaRow);
-    loadBlock(mediaBlock);
+    row.classList.add(size);
+    row.appendChild(mediaRow);
   });
   const zRowsOddCount = getOddRowsCount(zRows);
   if (zRowsOddCount === 0) {
@@ -73,4 +67,8 @@ export default function init(el) {
       if (i % 2) row.classList.add('media--reversed');
     });
   }
+  const mediaItems = el.querySelectorAll(':scope > .media');
+  mediaItems.forEach((i) => {
+    media(i);
+  });
 }

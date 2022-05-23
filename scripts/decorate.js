@@ -38,7 +38,7 @@ export function decorateIcons(el, displayText = true) {
       const icon = window.iconLibrary[str];
       if (icon) {
         const svg = `<img width="40" alt="${icon[0]}" src="${icon[1]}">`;
-        const anchor = `<a class="body-S icon ${str}" href="${icon[2]}">${svg} ${displayText ? icon[0] : ''}</a>`;
+        const anchor = `<a class="icon ${str}" href="${icon[2]}">${svg} ${displayText ? icon[0] : ''}</a>`;
         el.innerHTML = el.innerHTML.replace(`{{${str}}}`, anchor);
       } else {
         el.innerHTML = el.innerHTML.replace(`{{${str}}}`, '');
@@ -127,7 +127,7 @@ export function decorateBlockBg(block, node) {
   }
 }
 
-export function decorateHeadline(el, header, size) {
+export function decorateHeadline(header, size) {
   const headingRow = header.parentElement;
   headingRow.classList.add('heading-row');
   headingRow.parentElement.classList.add('container');

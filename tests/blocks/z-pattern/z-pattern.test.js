@@ -10,34 +10,33 @@ const mock = await readFile({ path: './z-pattern.mock.html' });
 document.body.innerHTML = mock;
 cleanVariations(document.body);
 
-describe('z-pattern', () => {
+describe('z-patterns', () => {
   const zPatterns = document.querySelectorAll('.z-pattern');
   zPatterns.forEach((block) => {
     init(block);
+    describe('z-pattern', () => {
+      it('has a supporting image', () => {
+        const hasImage = block.querySelector('.image');
+        expect(hasImage).does.exist;
+      });
+    });
   });
-  describe('default z-pattern', () => {
+  describe('default z-pattern 1', () => {
     it('has at least 2 media rows', () => {
-      const mediaRows = zPatterns[0].querySelectorAll('.media');
+      const mediaRows = zPatterns[1].querySelectorAll('.media');
       expect(mediaRows).length.greaterThanOrEqual(2);
     });
   });
-
-  describe('large z-pattern', () => {
-    it('has a heading-XL', () => {
-      const heading = zPatterns[1].querySelector('.heading-XL');
-      expect(heading).to.exist;
-    });
-
-    it('doesnt have a detail-M', () => {
-      const detailM = zPatterns[1].querySelector('.detail-M');
-      expect(detailM).to.not.exist;
+  describe('z-pattern 3 plain', () => {
+    it('Doesnt have a heading row or background', () => {
+      const hasHeadline = zPatterns[3].classList.contains('has-headline');
+      expect(hasHeadline).to.be.false;
     });
   });
-
-  describe('z-pattern', () => {
-    it('does not have heading row', () => {
-      const headingRow = zPatterns[2].querySelector('.heading-row');
-      expect(headingRow).to.not.exist;
+  describe('z-pattern last plain', () => {
+    it('Doesnt have a heading row or background', () => {
+      const hasHeadline = zPatterns[5].classList.contains('has-headline');
+      expect(hasHeadline).to.be.false;
     });
   });
 });
