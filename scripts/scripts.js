@@ -423,7 +423,6 @@ export function setTemplate() {
   const template = getMetadata('template');
   if (!template) return;
   document.body.classList.add(`${template}-template`);
-  loadStyle(`/template/${template}.css`);
 }
 
 /**
