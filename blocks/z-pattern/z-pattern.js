@@ -42,13 +42,26 @@ export default function init(el) {
   const children = el.querySelectorAll(':scope > div');
   const size = getBlockSize(el);
   const singleRowCount = getChildSingleRowCount(children);
-  // 1 single row  (bg || headline)
-  // 2 single rows (bg && headline)
-  const headerIndex = singleRowCount === 2 ? 1 : 0;
+  const headerIndex = singleRowCount === 1 ? 0 : 1;
   const rowHeader = children[headerIndex].querySelector('h1, h2, h3, h4, h5, h6');
   const rowBg = children[0].textContent != null;
-  if (rowHeader && singleRowCount) decorateHeadline(rowHeader, size);
-  if (rowBg && singleRowCount && rowHeader != null) decorateBlockBg(el, children[0]);
+  // 1 single row (bg || headline)
+  if (singleRowCount === 1) {
+    if (!rowHeader) {
+      decorateBlockBg(el, children[0]);
+    } else {
+      decorateHeadline(rowHeader, size);
+    }
+  }
+  // 2 single rows (bg && headline)
+  if (singleRowCount === 2) {
+    if (rowBg) {
+      decorateBlockBg(el, children[0]);
+    }
+    if (rowHeader) {
+      decorateHeadline(rowHeader, size);
+    }
+  }
   const zRows = el.querySelectorAll(':scope > div:not([class])');
   zRows.forEach((row) => {
     row.classList.add('media');
