@@ -14,7 +14,6 @@
  * Z-Pattern - v0.0.1
  */
 
-import { decorateBlock } from '../../scripts/scripts.js';
 import { decorateBlockBg, decorateHeadline, getBlockSize } from '../../scripts/decorate.js';
 import media from '../media/media.js';
 
@@ -65,7 +64,6 @@ export default function init(el) {
   const zRows = el.querySelectorAll(':scope > div:not([class])');
   zRows.forEach((row) => {
     row.classList.add('media');
-    decorateBlock(row);
     const mediaRow = document.createElement('div');
     const blockChildren = row.querySelectorAll(':scope > div');
     blockChildren.forEach((child) => {
