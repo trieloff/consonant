@@ -51,6 +51,27 @@ export function decorateIcons(el, displayText = true) {
   }
 }
 
+export function decorateTextDda(el, heading) {
+  const parent = el.parentElement;
+  parent.setAttribute('dda-lh', heading.textContent);
+  const links = parent.querySelectorAll('a, button');
+  if (links) {
+    links.forEach((link, i) => {
+      const linkType = () => {
+        if (link.classList.contains('con-button') || link.nodeName === 'BUTTON') {
+          return 'cta';
+        }
+        if (link.classList.contains('icon')) {
+          return 'icon cta';
+        }
+        return 'link';
+      };
+      const str = `${linkType(link)}|${link.innerText} ${i}`;
+      link.setAttribute('dda-ll', str);
+    });
+  }
+}
+
 export function decorateText(el, size) {
   const headings = el.querySelectorAll('h1, h2, h3, h4, h5, h6');
   const heading = headings[headings.length - 1];
@@ -77,6 +98,7 @@ export function decorateText(el, size) {
   }
   decorateIcons(el);
   decorateButtons(el);
+  decorateTextDda(el, heading);
 }
 
 // decorate text content in block by passing array of classes [ detail, heading, body ]
@@ -133,6 +155,16 @@ export function decorateHeadline(header, size) {
   headingRow.parentElement.classList.add('container');
   const headerClass = (size === 'large') ? 'heading-XL' : 'heading-L';
   header.classList.add(headerClass, 'headline');
+}
+
+export function decorateBlockDda(el) {
+  const lh = [];
+  const exclude = ['--', 'block'];
+  el.classList.forEach((c) => {
+    if (!c.includes(exclude[0]) && c !== exclude[1]) lh.push(c);
+  });
+  el.setAttribute('daa-im', 'true');
+  el.setAttribute('daa-lh', lh.join(' '));
 }
 
 export function getBlockSize(el) {
