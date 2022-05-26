@@ -104,14 +104,15 @@
 }
 
 .text .icon {
-  text-transform: capitalize;
-  font-weight: 700;
-  display: inline-flex;
   align-items: center;
-  text-decoration: none;
   color: var(--link-color);
+  display: inline-flex;
+  font-weight: 700;
+  line-height: var(--type-body-l-size);
   margin: 0;
   padding: 0;
+  text-decoration: none;
+  text-transform: capitalize;
 }
 
 .text .icon:hover {
