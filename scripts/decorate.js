@@ -51,7 +51,7 @@ export function decorateIcons(el, displayText = true) {
   }
 }
 
-export function decorateTextDda(el, heading) {
+export function decorateTextDaa(el, heading) {
   const parent = el.parentElement;
   parent.setAttribute('dda-lh', heading.textContent);
   const links = parent.querySelectorAll('a, button');
@@ -98,7 +98,7 @@ export function decorateText(el, size) {
   }
   decorateIcons(el);
   decorateButtons(el);
-  decorateTextDda(el, heading);
+  decorateTextDaa(el, heading);
 }
 
 // decorate text content in block by passing array of classes [ detail, heading, body ]
@@ -157,7 +157,7 @@ export function decorateHeadline(header, size) {
   header.classList.add(headerClass, 'headline');
 }
 
-export function decorateBlockDda(el) {
+export function decorateBlockDaa(el) {
   const lh = [];
   const exclude = ['--', 'block'];
   el.classList.forEach((c) => {

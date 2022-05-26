@@ -14,10 +14,10 @@
  * Media - v0.0.1
  */
 
-import { decorateBackground, decorateBlockDda, decorateText, getBlockSize } from '../../scripts/decorate.js';
+import { decorateBackground, decorateBlockDaa, decorateText, getBlockSize } from '../../scripts/decorate.js';
 
 export default function init(el) {
-  decorateBlockDda(el);
+  decorateBlockDaa(el);
   const children = el.querySelectorAll(':scope > div');
   if (children.length > 1) {
     if (children[0].childElementCount === 1) {
