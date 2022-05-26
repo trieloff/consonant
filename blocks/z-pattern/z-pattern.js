@@ -81,6 +81,6 @@ export default function init(el) {
   }
   const mediaItems = el.querySelectorAll(':scope > .media');
   mediaItems.forEach((i) => {
-    media(i);
+    media(i, false);
   });
 }

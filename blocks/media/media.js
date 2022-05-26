@@ -16,8 +16,8 @@
 
 import { decorateBackground, decorateBlockDaa, decorateText, getBlockSize } from '../../scripts/decorate.js';
 
-export default function init(el) {
-  decorateBlockDaa(el);
+export default function init(el, daa = true) {
+  if (daa) decorateBlockDaa(el);
   const children = el.querySelectorAll(':scope > div');
   if (children.length > 1) {
     if (children[0].childElementCount === 1) {

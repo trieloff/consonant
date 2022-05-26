@@ -51,10 +51,19 @@ export function decorateIcons(el, displayText = true) {
   }
 }
 
+export function decorateBlockDaa(el) {
+  const lh = [];
+  const exclude = ['--', 'block'];
+  el.classList.forEach((c) => {
+    if (!c.includes(exclude[0]) && c !== exclude[1]) lh.push(c);
+  });
+  el.setAttribute('daa-im', 'true');
+  el.setAttribute('daa-lh', lh.join(' '));
+}
+
 export function decorateTextDaa(el, heading) {
-  const parent = el.parentElement;
-  parent.setAttribute('dda-lh', heading.textContent);
-  const links = parent.querySelectorAll('a, button');
+  el.setAttribute('dda-lh', heading.textContent);
+  const links = el.querySelectorAll('a, button');
   if (links) {
     links.forEach((link, i) => {
       const linkType = () => {
@@ -66,7 +75,7 @@ export function decorateTextDaa(el, heading) {
         }
         return 'link';
       };
-      const str = `${linkType(link)}|${link.innerText} ${i}`;
+      const str = `${linkType(link)}|${link.innerText} ${i+1}`;
       link.setAttribute('dda-ll', str);
     });
   }
@@ -155,16 +164,6 @@ export function decorateHeadline(header, size) {
   headingRow.parentElement.classList.add('container');
   const headerClass = (size === 'large') ? 'heading-XL' : 'heading-L';
   header.classList.add(headerClass, 'headline');
-}
-
-export function decorateBlockDaa(el) {
-  const lh = [];
-  const exclude = ['--', 'block'];
-  el.classList.forEach((c) => {
-    if (!c.includes(exclude[0]) && c !== exclude[1]) lh.push(c);
-  });
-  el.setAttribute('daa-im', 'true');
-  el.setAttribute('daa-lh', lh.join(' '));
 }
 
 export function getBlockSize(el) {
