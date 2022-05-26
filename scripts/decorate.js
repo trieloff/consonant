@@ -75,7 +75,7 @@ export function decorateTextDaa(el, heading) {
         }
         return 'link';
       };
-      const str = `${linkType(link)}|${link.innerText} ${i+1}`;
+      const str = `${linkType(link)}|${link.innerText} ${i + 1}`;
       link.setAttribute('dda-ll', str);
     });
   }
