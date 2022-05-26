@@ -37,7 +37,7 @@ export function decorateIcons(el, displayText = true) {
     if (window.iconLibrary) {
       const icon = window.iconLibrary[str];
       if (icon) {
-        const svg = `<img width="40" alt="${icon[0]}" src="${icon[1]}">`;
+        const svg = `<img height="40" width="40" alt="${icon[0]}" src="${icon[1]}">`;
         const anchor = `<a class="icon ${str}" href="${icon[2]}">${svg} ${displayText ? icon[0] : ''}</a>`;
         el.innerHTML = el.innerHTML.replace(`{{${str}}}`, anchor);
       } else {
