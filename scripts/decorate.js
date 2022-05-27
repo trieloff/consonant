@@ -58,11 +58,11 @@ export function decorateBlockDaa(el) {
     if (!c.includes(exclude[0]) && c !== exclude[1]) lh.push(c);
   });
   el.setAttribute('daa-im', 'true');
-  el.setAttribute('daa-lh', lh.join(' '));
+  el.setAttribute('daa-lh', lh.join('|'));
 }
 
 export function decorateTextDaa(el, heading) {
-  el.setAttribute('dda-lh', heading.textContent);
+  el.setAttribute('daa-lh', heading.textContent);
   const links = el.querySelectorAll('a, button');
   if (links) {
     links.forEach((link, i) => {
@@ -76,7 +76,7 @@ export function decorateTextDaa(el, heading) {
         return 'link';
       };
       const str = `${linkType(link)}|${link.innerText} ${i + 1}`;
-      link.setAttribute('dda-ll', str);
+      link.setAttribute('daa-ll', str);
     });
   }
 }
