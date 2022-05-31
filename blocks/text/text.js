@@ -10,7 +10,7 @@
  * governing permissions and limitations under the License.
  */
 
-import { decorateButtons, decorateContent, decorateBackground } from '../../scripts/decorate.js';
+import { decorateButtons, decorateContent, decorateBlockBg, decorateBlockDaa, decorateText } from '../../scripts/decorate.js';
 
 /*
  * Text Block - v0.0.1
@@ -20,7 +20,7 @@ export default function init(el) {
   const children = el.querySelectorAll(':scope > div');
   const [background, ...rows] = children;
   // basic background handling
-  decorateBackground(background);
+  decorateBlockBg(el, background);
 
   // create foreground
   const container = document.createElement('div');
@@ -59,5 +59,8 @@ export default function init(el) {
         row.classList.add('hidden');
     }
   });
+  const cols = el.querySelectorAll('.text');
+  cols.forEach((col) => decorateText(el, col.querySelector('h1, h2, h3, h4, h5, h6')));
   decorateButtons(el);
+  decorateBlockDaa(el);
 }

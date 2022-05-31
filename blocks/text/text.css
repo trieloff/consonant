@@ -70,7 +70,7 @@
 }
 
 .text.vertical .container > div:not(.full-width) {
-  margin: 0 0 var(--spacing-ml)
+  margin: 0 0 var(--spacing-m)
 }
 
 .text.vertical .container > div:not(.full-width) a:not(.con-button) {
@@ -114,7 +114,7 @@
 
 @media screen and (min-width: 768px) {
   .text.vertical .container > div {
-    flex: 0 0 calc(50% - calc(var(--spacing-ml) / 2));
+    flex: 0 0 calc(50% - calc(var(--spacing-m) / 2));
   }
 
   .text.vertical .container .full-width {
@@ -130,6 +130,6 @@
   }
 
   .text.three-up .container > div {
-    flex: 0 0 calc(33.333% - calc(var(--spacing-ml) / 2));
+    flex: 0 0 calc(33.333% - calc(var(--spacing-m) / 2));
   }
 }
