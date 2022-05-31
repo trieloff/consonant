@@ -85,7 +85,7 @@ export function loadStyle(href, callback) {
  * fetches the string variables.
  * @returns {object} localized variables
  */
-export async function fetchColorLibrary() {
+export async function fetchLibs() {
   if (!window.colorlibrary) {
     const resp = await fetch(`${window.hlx.codeBasePath}/docs/color-library.json`);
     const json = await resp.json();
@@ -94,33 +94,15 @@ export async function fetchColorLibrary() {
       window.colorlibrary[color.key] = color.value;
     });
   }
-  return window.colorlibrary;
-}
-
-/**
- * fetches the color lightness.
- * @returns {boolean}
- */
-export function isColorDark(color) {
-  let r, g, b;
-  // Check the format of the color, HEX or RGB?
-  if (color.match(/^rgb/)) {
-    // If HEX --> store the red, green, blue values in separate variables
-    color = color.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+(?:\.\d+)?))?\)$/);
-    r = color[1];
-    g = color[2];
-    b = color[3];
-  } else {
-    // If RGB --> Convert it to HEX
-    color = +("0x" + color.slice(1).replace( color.length < 5 && /./g, '$&$&' ));
-    r = color >> 16;
-    g = color >> 8 & 255;
-    b = color & 255;
+  if (!window.iconLibrary) {
+    const resp = await fetch(`${window.hlx.codeBasePath}/docs/icon-library.json`);
+    const json = await resp.json();
+    window.iconLibrary = {};
+    json.data.forEach((icon) => {
+      window.iconLibrary[icon.key] = [icon.value, icon.path, icon.link];
+    });
   }
-  // HSP equation from http://alienryderflex.com/hsp.html
-  const hsp = Math.sqrt( 0.299 * (r * r) + 0.587 * (g * g) + 0.114 * (b * b) );
-  // Using the HSP value, determine whether the color is light or dark
-  return (hsp < 127.5);
+  return window.colorlibrary && window.iconLibrary;
 }
 
 /**
@@ -441,7 +423,6 @@ export function setTemplate() {
   const template = getMetadata('template');
   if (!template) return;
   document.body.classList.add(`${template}-template`);
-  loadStyle(`/template/${template}.css`);
 }
 
 /**
@@ -519,7 +500,7 @@ async function loadLazy(doc) {
   const header = doc.querySelector('header > div');
   const main = document.querySelector('main');
   if (main) {
-    await fetchColorLibrary();
+    await fetchLibs();
     loadBlocks(main);
 
     decorateBlock(header);
