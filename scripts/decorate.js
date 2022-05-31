@@ -141,14 +141,14 @@ export function decorateBackground(background) {
 // check if hex or has color library value
 export function getLibColor(str) {
   const isHex = str[0] === '#';
-  const libColor = !isHex && window.colorlibrary[str];
+  const libColor = !isHex && window.colorlibrary ? window.colorlibrary[str] : str;
   return !isHex && libColor ? libColor : str;
 }
 
 // decorate background with color lib
 export function decorateBlockBg(block, node) {
   node.classList.add('background');
-  if (!node.querySelector(':scope img') && window.colorlibrary) {
+  if (!node.querySelector(':scope img')) {
     const bgColor = getLibColor(node.textContent);
     block.style.background = bgColor;
     const darkColors = ['#323232', '#000000'];
