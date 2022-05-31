@@ -101,12 +101,12 @@
     width: 100%;
 }
 
-.aside .foreground.container .product-area {
+.aside .foreground.container .icon-area {
     height: var(--spacing-xl);
     margin-bottom: var(--spacing-m);
 }
 
-.aside .foreground.container .product-area img {
+.aside .foreground.container .icon-area img {
     max-width: 234px;
     height: var(--spacing-xl);
     width: auto;
@@ -333,7 +333,7 @@
         padding-right: 0;
     }
 
-    .aside .foreground.container .product-area img {
+    .aside .foreground.container .icon-area img {
         max-width: 400px;
     }
 

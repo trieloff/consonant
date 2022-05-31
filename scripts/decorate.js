@@ -47,7 +47,7 @@ export function decorateIcons(el, displayText = true) {
   });
   const icons = el.querySelectorAll('.icon');
   if (icons.length > 0) {
-    icons[0].closest('p').classList.add('product-area');
+    icons[0].closest('p').classList.add('icon-area');
   }
 }
 

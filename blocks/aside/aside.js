@@ -28,7 +28,6 @@ function decorateContent(el) {
     if (el) {
         const text = el.querySelector('h1, h2, h3, h4, h5, h6')?.closest('div');
         text?.classList.add('text');
-        text?.querySelector(':scope img')?.closest('p')?.classList.add('product-area');
         const headings = text?.querySelectorAll('h1, h2, h3, h4, h5, h6');
         const heading = headings?.[headings.length - 1];
         heading?.classList.add('heading-XL');
