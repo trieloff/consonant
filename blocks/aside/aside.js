@@ -11,7 +11,7 @@
  */
 
 /*
-* Aside - v0.0.1
+* Aside - v5.1
 */
 
 import { decorateBlockDaa, decorateBlockBg, decorateButtons, decorateIcons, decorateTextDaa } from "../../scripts/decorate.js";
