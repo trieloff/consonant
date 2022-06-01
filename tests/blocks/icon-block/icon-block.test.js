@@ -20,7 +20,7 @@ describe('icon blocks', () => {
             if (children.length) {
                 children.forEach(blk => {
                     it('has an icon', () => {
-                        const icon = blk.querySelector('.product-area');
+                        const icon = blk.querySelector('.icon-area');
                         expect(icon).to.exist;
                     });
 
