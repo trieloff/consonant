@@ -11,7 +11,7 @@
  */
 
 /*
-* Icon Block - v0.0.1
+* Icon Block - v5.1
 */
 
 import { decorateButtons, decorateIcons, decorateTextDaa, decorateBlockDaa, decorateBlockBg } from "../../scripts/decorate.js";
