@@ -133,7 +133,6 @@ export function decorateBackground(background) {
       const libColor = !isHex && window.colorlibrary[background.textContent];
       const bgColor = !isHex && libColor ? libColor : background.textContent;
       if (bgColor) background.style.background = bgColor;
-      // background.setAttribute('style', `background: ${bgColor ?? 'transparent'}`);
       background.children[0].remove();
     }
   }
