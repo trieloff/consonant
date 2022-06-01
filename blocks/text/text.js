@@ -13,7 +13,7 @@
 import { decorateButtons, decorateBlockBg, decorateBlockDaa, decorateText } from '../../scripts/decorate.js';
 
 /*
- * Text Block - v0.0.1
+ * Text Block - v5.1
  */
 
 // decorate text content in block by passing array of classes [ detail, heading, body ]
