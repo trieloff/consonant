@@ -11,7 +11,7 @@
  */
 
 /*
- * Z-Pattern - v0.0.1
+ * Z-Pattern - v5.1
  */
 
 import { decorateBlockBg, decorateBlockDaa, decorateHeadline, getBlockSize } from '../../scripts/decorate.js';

@@ -233,16 +233,7 @@
 
 }
 
-@media screen and (min-width: 800px) {
-  .media > .foreground .media-row {
-    margin: 0 auto;
-  }
-}
-
 @media screen and (min-width: 1000px) {
-  .media.large > .foreground .media-row {
-    margin: 0 var(--spacing-s);
-  }
   .media.two-up .foreground {
     max-width: var(--block-container-width-m);
   }

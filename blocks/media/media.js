@@ -11,7 +11,7 @@
  */
 
 /*
- * Media - v0.0.1
+ * Media - v5.1
  */
 
 import { decorateBlockBg, decorateBlockDaa, decorateText, getBlockSize } from '../../scripts/decorate.js';
