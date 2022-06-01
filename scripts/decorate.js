@@ -47,7 +47,7 @@ export function decorateIcons(el, displayText = true) {
   });
   const icons = el.querySelectorAll('.icon');
   if (icons.length > 0) {
-    icons[0].closest('p').classList.add('product-area');
+    icons[0].closest('p').classList.add('icon-area');
   }
 }
 
@@ -62,6 +62,7 @@ export function decorateBlockDaa(el) {
 }
 
 export function decorateTextDaa(el, heading) {
+  console.log(el);
   el.setAttribute('daa-lh', heading.textContent);
   const links = el.querySelectorAll('a, button');
   if (links) {
@@ -115,26 +116,13 @@ export function decorateContent(el, classList) {
   if (el && classList.length === 3) {
     const text = el.querySelector('h1, h2, h3, h4, h5, h6')?.closest('div');
     text?.classList.add('text');
-    text?.querySelector(':scope img')?.closest('p')?.classList.add('product-area');
+    text?.querySelector(':scope img')?.closest('p')?.classList.add('icon-area');
     const headings = text.querySelectorAll('h1, h2, h3, h4, h5, h6');
     const heading = headings[headings.length - 1];
     heading.classList.add(classList[1]);
     heading.nextElementSibling.classList.add(classList[2]);
     if (heading.previousElementSibling) heading.previousElementSibling.classList.add(classList[0]);
     el?.querySelector(':scope > div:not([class])')?.classList.add('image');
-  }
-}
-
-export function decorateBackground(background) {
-  if (background) {
-    background.classList.add('background');
-    if (!background.querySelector(':scope img') && window.colorlibrary) {
-      const isHex = background.textContent[0] === '#';
-      const libColor = !isHex && window.colorlibrary[background.textContent];
-      const bgColor = !isHex && libColor ? libColor : background.textContent;
-      if (bgColor) background.style.background = bgColor;
-      background.children[0].remove();
-    }
   }
 }
 

@@ -57,14 +57,14 @@
     margin-bottom: var(--spacing-xxl);
 }
 
-.icon-block .foreground.container .text .product-area {
+.icon-block .foreground.container .text .icon-area {
     margin: 0 auto var(--spacing-s) auto;
     height: 80px;
     max-width: 234px;
     overflow: hidden;
 }
 
-.icon-block .foreground.container .text .product-area img {
+.icon-block .foreground.container .text .icon-area img {
     height: 80px;
     width: auto;
 }
@@ -106,7 +106,7 @@
     text-align: left;
 }
 
-.icon-block.vertical .foreground.container .text .product-area {
+.icon-block.vertical .foreground.container .text .icon-area {
     margin: 0;
     margin-bottom: var(--spacing-xs);
 }
@@ -118,9 +118,8 @@
 
 
 /* Tablet */
-
 @media screen and (min-width: 768px) {
-    .icon-block .foreground.container .text .product-area {
+    .icon-block .foreground.container .text .icon-area {
         max-width: 234px;
     }
 
@@ -146,7 +145,6 @@
 }
 
 /* Desktop */
-
 @media screen and (min-width: 1200px) {
     .icon-block .foreground.container {
         padding: 104px 0;
@@ -160,7 +158,7 @@
         max-width: 800px;
     }
 
-    .icon-block .foreground.container .text .product-area {
+    .icon-block .foreground.container .text .icon-area {
         max-width: 400px;
     }
 
@@ -195,15 +193,15 @@
         padding-right: 0;
     }
 
-    .icon-block.vertical.two-up .foreground.container .text .product-area {
+    .icon-block.vertical.two-up .foreground.container .text .icon-area {
         max-width: 400px;
     }
 
-    .icon-block.vertical.three-up .foreground.container .text .product-area {
+    .icon-block.vertical.three-up .foreground.container .text .icon-area {
         max-width: 300px;
     }
 
-    .icon-block.vertical.four-up .foreground.container .text .product-area {
+    .icon-block.vertical.four-up .foreground.container .text .icon-area {
         max-width: 276px;
     }
 }

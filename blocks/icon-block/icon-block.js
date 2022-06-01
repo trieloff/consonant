@@ -14,12 +14,27 @@
 * Icon Block - v0.0.1
 */
 
-import { decorateBackground, decorateButtons, decorateContent, decorateIcons } from "../../scripts/decorate.js";
+import { decorateButtons, decorateIcons, decorateTextDaa, decorateBlockDaa, decorateBlockBg } from "../../scripts/decorate.js";
+
+function decorateContent(el, styles) {
+    if (el) {
+        const text = el.querySelector('h1, h2, h3, h4, h5, h6')?.closest('div');
+        text?.classList.add('text');
+        const headings = text?.querySelectorAll('h1, h2, h3, h4, h5, h6');
+        const heading = headings?.[headings.length - 1];
+        heading?.classList.add(styles[1]);
+        heading?.nextElementSibling.classList.add(styles[2]);
+        heading?.previousElementSibling?.classList.add(styles[0]);
+        el.querySelector(':scope > div:not([class])')?.classList.add('image');
+        decorateTextDaa(text, heading);
+    }
+}
 
 export default function init(el) {
+    decorateBlockDaa(el);
     const children = el.querySelectorAll(':scope > div');
     if (children.length > 1) {
-        if (children[0].childNodes.length) decorateBackground(children[0]);
+        if (children[0].childNodes.length) decorateBlockBg(el, children[0]);
 
         const container = document.createElement('div');
         container.classList.add('foreground', 'container');
@@ -27,7 +42,7 @@ export default function init(el) {
 
         const blocks = el.querySelectorAll(':scope > div:not([class])');
         const headingClass = el.classList.contains('vertical') ? 'heading-S' : 'heading-XL';
-        const contentClasses = ['product-area', headingClass, 'body-M'];
+        const contentClasses = ['icon-area', headingClass, 'body-M'];
 
         [...blocks].forEach(block => {
             decorateContent(block, contentClasses);
