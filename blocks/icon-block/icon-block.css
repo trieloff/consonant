@@ -118,7 +118,7 @@
 
 
 /* Tablet */
-@media (min-width: 600px) and (max-width: 1199px) {
+@media screen and (min-width: 600px) {
     .icon-block .foreground.container .text .icon-area {
         max-width: 234px;
     }

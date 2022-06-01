@@ -62,7 +62,6 @@ export function decorateBlockDaa(el) {
 }
 
 export function decorateTextDaa(el, heading) {
-  console.log(el);
   el.setAttribute('daa-lh', heading.textContent);
   const links = el.querySelectorAll('a, button');
   if (links) {
