@@ -60,9 +60,9 @@
   --spacing-s: 24px;
   --spacing-m: 32px;
   --spacing-l: 40px;
-  --spacing-xl: 56px;
-  --spacing-xxl: 80px;
-  --spacing-xxxl: 104px;
+  --spacing-xl: 48px;
+  --spacing-xxl: 56px;
+  --spacing-xxxl: 80px;
 
   /* Grid */
   --grid-container-width: 83.4%;
@@ -85,9 +85,9 @@
 
 @media (min-width: 1200px) {
   :root {
-    --spacing-xl: 48px;
-    --spacing-xxl: 56px;
-    --spacing-xxxl: 80px;
+    --spacing-xl: 56px;
+    --spacing-xxl: 80px;
+    --spacing-xxxl: 104px;
 
     --type-heading-xxxl-size: 80px;
     --type-heading-xxxl-lh: 88px;
