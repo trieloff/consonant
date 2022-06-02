@@ -53,7 +53,7 @@
 
 .text .full-width .heading-XL,
 .text .full-width .heading-L {
-  margin: 0 0 var(--spacing-s);
+  margin: 0 0 var(--spacing-xs);
 }
 
 .text .full-width p {
@@ -61,7 +61,7 @@
 }
 
 .text .full-width p:not(:last-child) {
-  margin: 0 0 var(--spacing-m);
+  margin: 0 0 var(--spacing-s);
 }
 
 .text.vertical .container {
@@ -75,7 +75,7 @@
 }
 
 .text.vertical p {
-  margin-bottom: var(--spacing-m);
+  margin-bottom: var(--spacing-s);
 }
 
 .text.vertical .container > div:not(.full-width) {
@@ -88,11 +88,11 @@
 }
 
 .text.vertical a.outline + a {
-  margin-left: var(--spacing-m);
+  margin-left: var(--spacing-s);
 }
 
 .text.vertical .heading-M {
-  margin: 0 0 var(--spacing-s);
+  margin: 0 0 var(--spacing-xs);
 }
 
 /* Dark styles */
