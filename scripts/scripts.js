@@ -82,6 +82,30 @@ export function loadStyle(href, callback) {
 }
 
 /**
+ * fetches the string variables.
+ * @returns {object} localized variables
+ */
+export async function fetchLibs() {
+  if (!window.colorlibrary) {
+    const resp = await fetch(`${window.hlx.codeBasePath}/docs/color-library.json`);
+    const json = await resp.json();
+    window.colorlibrary = {};
+    json.data.forEach((color) => {
+      window.colorlibrary[color.key] = color.value;
+    });
+  }
+  if (!window.iconLibrary) {
+    const resp = await fetch(`${window.hlx.codeBasePath}/docs/icon-library.json`);
+    const json = await resp.json();
+    window.iconLibrary = {};
+    json.data.forEach((icon) => {
+      window.iconLibrary[icon.key] = [icon.value, icon.path, icon.link];
+    });
+  }
+  return window.colorlibrary && window.iconLibrary;
+}
+
+/**
  * Retrieves the content of a metadata tag.
  * @param {string} name The metadata name (or property)
  * @returns {string} The metadata value
@@ -122,6 +146,17 @@ function wrapSections(sections) {
       $wrapper.appendChild(section);
     }
   });
+}
+
+/**
+ * Sanitizes a name for use as class name.
+ * @param {*} name The unsanitized name
+ * @returns {string} The class name
+ */
+export function toClassName(name) {
+  return name && typeof name === 'string'
+    ? name.toLowerCase().replace(/[^0-9a-z]/gi, '-')
+    : '';
 }
 
 /**
@@ -455,6 +490,7 @@ export function decorateMain() {
 async function loadEager() {
   setTemplate();
   decorateMain();
+  await fetchLibs();
   await waitForLCP();
 }
 
