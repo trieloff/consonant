@@ -16,40 +16,41 @@
 
 import { decorateButtons, decorateIcons, decorateTextDaa, decorateBlockDaa, decorateBlockBg } from "../../scripts/decorate.js";
 
-function decorateContent(el, styles) {
-    if (el) {
-        const text = el.querySelector('h1, h2, h3, h4, h5, h6')?.closest('div');
+function decorateLayout(el) {
+    const children = el.querySelectorAll(':scope > div');
+    if (children.length > 1 && children[0].childNodes.length) {
+        decorateBlockBg(el, children[0]);
+    }
+    const foreground = document.createElement('div');
+    foreground.classList.add('foreground', 'container');
+    el.appendChild(foreground);
+    return foreground;
+}
+
+function decorateContent(row, isVertical) {
+    if (row) {
+        const text = row.querySelector('h1, h2, h3, h4, h5, h6')?.closest('div');
         text?.classList.add('text');
         const headings = text?.querySelectorAll('h1, h2, h3, h4, h5, h6');
         const heading = headings?.[headings.length - 1];
-        heading?.classList.add(styles[1]);
-        heading?.nextElementSibling.classList.add(styles[2]);
-        heading?.previousElementSibling?.classList.add(styles[0]);
-        el.querySelector(':scope > div:not([class])')?.classList.add('image');
+        heading?.classList.add(isVertical ? 'heading-S' : 'heading-XL');
+        heading?.nextElementSibling?.classList.add('body-M');
+        heading?.previousElementSibling?.classList.add('icon-area');
+        row.querySelector(':scope > div:not([class])')?.classList.add('image');
         decorateTextDaa(text, heading);
+        decorateButtons(row);
     }
 }
 
 export default function init(el) {
     decorateBlockDaa(el);
-    const children = el.querySelectorAll(':scope > div');
-    if (children.length > 1) {
-        if (children[0].childNodes.length) decorateBlockBg(el, children[0]);
-
-        const container = document.createElement('div');
-        container.classList.add('foreground', 'container');
-        el.appendChild(container);
-
-        const blocks = el.querySelectorAll(':scope > div:not([class])');
-        const headingClass = el.classList.contains('vertical') ? 'heading-S' : 'heading-XL';
-        const contentClasses = ['icon-area', headingClass, 'body-M'];
-
-        [...blocks].forEach(block => {
-            decorateContent(block, contentClasses);
-            decorateButtons(block);
-            container.insertAdjacentElement('beforeEnd', block.children[0]);
-            block.remove();
-        });
-        decorateIcons(el, false);
-    }
+    decorateIcons(el, false);
+    const foreground = decorateLayout(el);
+    const rows = el.querySelectorAll(':scope > div:not([class])');
+    const isVertical = el.classList.contains('vertical');
+    [...rows].forEach(row => {
+        decorateContent(row, isVertical);
+        foreground.insertAdjacentElement('beforeEnd', row.children[0]);
+        row.remove();
+    });
 }
