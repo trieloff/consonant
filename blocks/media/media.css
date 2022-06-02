@@ -26,13 +26,14 @@
 }
 
 .media > .foreground .media-row {
-    display: flex;
     align-items: center;
-    justify-content: stretch;
+    display: flex;
+    flex-direction: column;
     gap:  var(--spacing-s);
+    justify-content: stretch;
+    margin: 0 auto;
     padding: var(--spacing-s) 0;
     position: relative;
-    flex-direction: column;
 }
 
 .media.media-reverse-mobile .foreground .media-row {
@@ -62,7 +63,7 @@
 
 .media .text .heading-L,
 .media .text .heading-XL {
-  margin-bottom: var(--spacing-m);
+  margin-bottom: var(--spacing-xs);
 }
 
 .media .text .body-S,
@@ -139,25 +140,32 @@
   .media > .foreground .media-row {
     gap: var(--spacing-m);
     flex-direction: row;
+    max-width: var(--block-container-width-m);
+  }
+
+  .media.small > .foreground .media-row {
     max-width: var(--block-container-width-s);
+  }
+
+  .media.large > .foreground .media-row {
+    gap: var(--spacing-xl);
+    max-width: var(--block-container-width-l);
   }
 
   .media.media-reverse-mobile .foreground .media-row {
     flex-direction: row;
   }
 
-  .media.medium > .foreground .media-row {
-    max-width: var(--block-container-width-m);
-  }
-
-  .media.large > .foreground .media-row {
-    max-width: var(--block-container-width-l);
-  }
-
   .media.large > .foreground .media-row .text,
-  .media.large > .foreground .media-row .image { width: 50%; }
+  .media.large > .foreground .media-row .image {
+    width: 50%;
+  }
+
   .media[class*="-up"].large > .foreground .media-row .text,
-  .media[class*="-up"].large > .foreground .media-row .image { width: 100%; }
+  .media[class*="-up"].large > .foreground .media-row .image {
+    width: 100%;
+  }
+
   .media.media--reversed .foreground .media-row > div:first-child {
     order: 2;
   }
@@ -191,57 +199,14 @@
     grid-template-rows: auto;
     gap: var(--spacing-m);
   }
-
-  .media.two-up.z-pattern .foreground,
-  .media.three-up.z-pattern .foreground,
-  .media.four-up.z-pattern .foreground {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .media.two-up.z-pattern .foreground .media-row,
-  .media.three-up.z-pattern .foreground .media-row,
-  .media.four-up.z-pattern .foreground .media-row {
-    max-width: var(--grid-container-width);
-    margin: 0 auto;
-    padding: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap:  var(--spacing-s);
-    position: relative;
-  }
-
-  .media.two-up.z-pattern .foreground .media-row.z-row-odd,
-  .media.three-up.z-pattern .foreground .media-row.z-row-odd,
-  .media.four-up.z-pattern .foreground .media-row.z-row-odd {
-    flex-direction: row-reverse;
-  }
-
-  .media.two-up.z-pattern .foreground .media-row > div:first-of-type,
-  .media.three-up.z-pattern .foreground .media-row > div:first-of-type,
-  .media.four-up.z-pattern .foreground .media-row > div:first-of-type {
-    margin-right: var(--spacing-s);
-    margin-bottom: 0;
-  }
-
-  .media.two-up.z-pattern .foreground .media-row > div,
-  .media.three-up.z-pattern .foreground .media-row > div,
-  .media.four-up.z-pattern .foreground .media-row > div {
-    flex: 0 0 50%;
-  }
-
-}
-
-@media screen and (min-width: 1000px) {
-  .media.two-up .foreground {
-    max-width: var(--block-container-width-m);
-  }
 }
 
 @media screen and (min-width: 1200px) {
-  .media.medium > .foreground .media-row {
+  .media > .foreground .media-row {
     gap: var(--spacing-l);
+  }
+  .media.small > .foreground .media-row {
+    gap: var(--spacing-m);
   }
   .media.large > .foreground .media-row {
     gap: var(--spacing-xl);
