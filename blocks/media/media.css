@@ -71,10 +71,6 @@
   margin-bottom: var(--spacing-xs);
 }
 
-.media .text img {
-  max-height: var(--spacing-xl);
-}
-
 .media .text .action-area {
   display: flex;
   margin: 0;
@@ -148,7 +144,7 @@
   }
 
   .media.large > .foreground .media-row {
-    gap: var(--spacing-xl);
+    gap: var(--spacing-m);
     max-width: var(--block-container-width-l);
   }
 
