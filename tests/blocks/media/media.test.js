@@ -33,9 +33,5 @@ describe('media', () => {
       const isDark = medias[1].classList.contains('dark');
       expect(isDark).to.exist;
     });
-    it('has a icon-area', () => {
-      const iconArea = medias[1].querySelector('.icon-area');
-      expect(iconArea).to.exist;
-    });
   });
 });
