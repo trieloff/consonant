@@ -491,6 +491,7 @@ async function loadEager() {
   await fetchLibs();
   setTemplate();
   decorateMain();
+  await fetchLibs();
   await waitForLCP();
 }
 
