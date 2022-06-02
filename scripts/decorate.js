@@ -47,7 +47,7 @@ export function decorateIcons(el, displayText = true) {
   });
   const icons = el.querySelectorAll('.icon');
   if (icons.length > 0) {
-    icons[0].closest('p').classList.add('product-area');
+    icons[0].closest('p').classList.add('icon-area');
   }
 }
 
@@ -113,7 +113,7 @@ export function decorateText(el, size) {
 // check if hex or has color library value
 export function getLibColor(str) {
   const isHex = str[0] === '#';
-  const libColor = !isHex && window.colorlibrary[str];
+  const libColor = !isHex && window.colorlibrary ? window.colorlibrary[str] : str;
   return !isHex && libColor ? libColor : str;
 }
 

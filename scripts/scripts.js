@@ -11,7 +11,7 @@
  */
 
 const PROJECT = 'consonant--adobecom';
-const LCP_BLOCKS = ['marquee']; // add your LCP blocks to the list
+const LCP_BLOCKS = ['marquee', 'media', 'z-pattern']; // add your LCP blocks to the list
 
 /**
  * log RUM if part of the sample.
@@ -375,7 +375,7 @@ export function makeRelative(anchor) {
   const url = new URL(href);
   const host = url.hostname;
   if (host.endsWith(`${PROJECT}.hlx3.page`)
-      || host.endsWith(`${PROJECT}.hlx.live`)) {
+    || host.endsWith(`${PROJECT}.hlx.live`)) {
     const relative = `${url.pathname}${url.search}${url.hash}`;
     anchor.setAttribute('href', relative);
     return relative;
