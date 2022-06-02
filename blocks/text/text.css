@@ -12,6 +12,15 @@
   margin-top: 0;
 }
 
+.text p.dbl-link-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.text p.dbl-link-wrap a.con-button {
+  flex: 0 0 auto;
+}
+
 .text a:not(.con-button) {
   color: var(--link-color);
   font-weight: 700;

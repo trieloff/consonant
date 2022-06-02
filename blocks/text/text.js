@@ -72,8 +72,10 @@ export default function init(el) {
         row.classList.add('hidden');
     }
   });
-  const cols = el.querySelectorAll('.text');
-  cols.forEach((col) => decorateText(el, col.querySelector('h1, h2, h3, h4, h5, h6')));
   decorateButtons(el);
+  el.querySelectorAll('.text').forEach((col) => {
+    col.querySelector('a + a')?.closest('p').classList.add('dbl-link-wrap');
+    decorateText(el, col.querySelector('h1, h2, h3, h4, h5, h6'));
+  });
   decorateBlockDaa(el);
 }
