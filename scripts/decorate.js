@@ -114,7 +114,7 @@ export function decorateText(el, size) {
 export function getLibColor(str) {
   const isHex = str[0] === '#';
   const libColor = !isHex && window.colorlibrary ? window.colorlibrary[str] : str;
-  return !isHex && libColor ? libColor : str;
+  return libColor;
 }
 
 // decorate background with color lib
