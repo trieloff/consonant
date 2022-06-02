@@ -488,7 +488,6 @@ export function decorateMain() {
  * loads everything needed to get to LCP.
  */
 async function loadEager() {
-  await fetchLibs();
   setTemplate();
   decorateMain();
   await fetchLibs();
