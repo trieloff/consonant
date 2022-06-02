@@ -9,7 +9,7 @@
     overflow: hidden;
 }
 
-.aside.split[data-block-status="loaded"] {
+.aside[data-block-status="loaded"] {
     display: flex;
 }
 
