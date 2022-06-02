@@ -40,7 +40,7 @@
 }
 
 .icon-block .foreground.container {
-    padding-top: var(--spacing-xxl);
+    padding-top: var(--spacing-xxxl);
     display: flex;
     position: relative;
     align-items: baseline;
@@ -54,11 +54,11 @@
     flex-wrap: wrap;
     align-content: center;
     width: 100%;
-    margin-bottom: var(--spacing-xxl);
+    margin-bottom: var(--spacing-xxxl);
 }
 
 .icon-block .foreground.container .text .icon-area {
-    margin: 0 auto var(--spacing-s) auto;
+    margin: 0 auto var(--spacing-xs) auto;
     height: 80px;
     max-width: 234px;
     overflow: hidden;
@@ -75,11 +75,11 @@
 
 .icon-block .foreground.container .text .heading-XL,
 .icon-block .foreground.container .text .heading-S {
-    margin: var(--spacing-s) 0;
+    margin: var(--spacing-xs) 0;
 }
 
 .icon-block .foreground.container .text .body-M {
-    margin-bottom: var(--spacing-m);
+    margin-bottom: var(--spacing-s);
 }
 
 .icon-block .foreground.container .text .action-area {
@@ -87,7 +87,7 @@
 }
 
 .icon-block .foreground.container .text .action-area>a {
-    margin-right: var(--spacing-m);
+    margin-right: var(--spacing-s);
     white-space: nowrap;
 }
 
@@ -104,11 +104,16 @@
 
 .icon-block.vertical .foreground.container {
     text-align: left;
+    margin-bottom: var(--spacing-s);
+}
+
+.icon-block.vertical .foreground.container .text {
+    margin-bottom: var(--spacing-xxl);
 }
 
 .icon-block.vertical .foreground.container .text .icon-area {
     margin: 0;
-    margin-bottom: var(--spacing-xs);
+    margin-bottom: var(--spacing-xxs);
 }
 
 .icon-block.vertical .foreground.container .text .action-area>a:not(.con-button) {
@@ -147,7 +152,7 @@
 /* Desktop */
 @media screen and (min-width: 1200px) {
     .icon-block .foreground.container {
-        padding: 104px 0;
+        padding: var(--spacing-xxxl) 0;
     }
 
     .icon-block .foreground.container .text {
@@ -166,11 +171,13 @@
 
     .icon-block.vertical .foreground.container {
         flex-wrap: nowrap;
+        margin-bottom: 0;
     }
 
     .icon-block.vertical .foreground.container .text {
         flex-grow: 1;
         flex-basis: 0;
+        margin-bottom: 0;
     }
 
     .icon-block.vertical.two-up .foreground.container {
