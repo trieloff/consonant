@@ -31,7 +31,7 @@ function decorateContent(el) {
         const headings = text?.querySelectorAll('h1, h2, h3, h4, h5, h6');
         const heading = headings?.[headings.length - 1];
         heading?.classList.add('heading-XL');
-        heading?.nextElementSibling.classList.add('body-S');
+        heading?.nextElementSibling?.classList.add('body-S');
         heading?.previousElementSibling?.classList.add('detail-M');
         el.querySelector(':scope > div:not([class])')?.classList.add('image');
         decorateTextDaa(el, heading);
@@ -39,9 +39,9 @@ function decorateContent(el) {
 }
 
 export default function init(el) {
-    const content = decorateLayout(el);
+    const foreground = decorateLayout(el);
     decorateBlockDaa(el);
-    decorateContent(content);
-    decorateButtons(content);
+    decorateContent(foreground);
+    decorateButtons(foreground);
     decorateIcons(el, false);
 }
