@@ -331,6 +331,7 @@
     .aside .foreground.container .text {
         max-width: 500px;
         padding-right: 0;
+        padding: var(--spacing-xxxl) 0;
     }
 
     .aside .foreground.container .icon-area img {
@@ -356,7 +357,7 @@
 
     .aside.split .foreground.container .text {
         flex: 0 0 300px;
-        padding: var(--spacing-xxl) 0;
+        padding: var(--spacing-xxxl) 0;
     }
 
     .aside.split .foreground.container .image {
