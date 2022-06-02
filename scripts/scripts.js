@@ -490,6 +490,7 @@ export function decorateMain() {
 async function loadEager() {
   setTemplate();
   decorateMain();
+  await fetchLibs();
   await waitForLCP();
 }
 
@@ -500,7 +501,6 @@ async function loadLazy(doc) {
   const header = doc.querySelector('header > div');
   const main = document.querySelector('main');
   if (main) {
-    await fetchLibs();
     loadBlocks(main);
 
     decorateBlock(header);
