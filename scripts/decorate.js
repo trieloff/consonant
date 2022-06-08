@@ -43,11 +43,13 @@ export function decorateIcons(el, displayText = true) {
       } else {
         el.innerHTML = el.innerHTML.replace(`{{${str}}}`, '');
       }
+    } else {
+      el.innerHTML = el.innerHTML.replace(`{{${str}}}`, `<span class="icon">${str}</span>`);
     }
   });
   const icons = el.querySelectorAll('.icon');
   if (icons.length > 0) {
-    icons[0].closest('p').classList.add('product-area');
+    icons[0].closest('p').classList.add('icon-area');
   }
 }
 

@@ -23,6 +23,10 @@ describe('media', () => {
       const image = medias[0].querySelector('.foreground .image img');
       expect(image).to.exist;
     });
+    it('has a icon area', () => {
+      const iconArea = medias[0].querySelector('.icon-area');
+      expect(iconArea).to.exist;
+    });
   });
   describe('dark media large', () => {
     it('has a heading-XL', () => {
