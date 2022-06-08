@@ -43,6 +43,8 @@ export function decorateIcons(el, displayText = true) {
       } else {
         el.innerHTML = el.innerHTML.replace(`{{${str}}}`, '');
       }
+    } else {
+      el.innerHTML = el.innerHTML.replace(`{{${str}}}`, `<span class="icon">${str}</span>`);
     }
   });
   const icons = el.querySelectorAll('.icon');
@@ -113,8 +115,8 @@ export function decorateText(el, size) {
 // check if hex or has color library value
 export function getLibColor(str) {
   const isHex = str[0] === '#';
-  const libColor = !isHex && window.colorlibrary ? window.colorlibrary[str] : str;
-  return libColor;
+  const libColor = !isHex && window.colorlibrary[str];
+  return !isHex && libColor ? libColor : str;
 }
 
 // decorate background with color lib

@@ -88,8 +88,8 @@ export function loadStyle(href, callback) {
 export async function fetchLibs() {
   if (window.colorlibrary && window.iconLibrary) return;
   const [colorsRes, iconsRes] = await Promise.all([
-    fetch(`${window.hlx.codeBasePath}/docs/color-library.json`),
-    fetch(`${window.hlx.codeBasePath}/docs/icon-library.json`),
+    fetch(`${window.location.origin}/docs/color-library.json`),
+    fetch(`${window.location.origin}/docs/icon-library.json`),
   ]);
   const colors = await colorsRes.json();
   const icons = await iconsRes.json();
