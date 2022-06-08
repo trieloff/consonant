@@ -43,6 +43,8 @@ export function decorateIcons(el, displayText = true) {
       } else {
         el.innerHTML = el.innerHTML.replace(`{{${str}}}`, '');
       }
+    } else {
+      el.innerHTML = el.innerHTML.replace(`{{${str}}}`, `<span class="icon">${str}</span>`);
     }
   });
   const icons = el.querySelectorAll('.icon');

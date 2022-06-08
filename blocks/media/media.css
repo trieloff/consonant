@@ -77,7 +77,7 @@
   gap: var(--spacing-xs);
 }
 
-.text .product-area {
+.text .icon-area {
   margin: 0 0 var(--spacing-s) 0;
   gap: var(--spacing-xs);
   display: grid;
@@ -166,7 +166,7 @@
     order: 2;
   }
 
-  .media .text .product-area {
+  .media .text .icon-area {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
