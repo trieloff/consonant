@@ -1,5 +1,4 @@
 /* Aside Block */
-
 .aside {
     display: none;
     width: 100%;
@@ -30,7 +29,6 @@
 }
 
 /* Standard */
-
 .aside .background {
     overflow: hidden;
     position: absolute;
@@ -116,7 +114,6 @@
 }
 
 /* Simple */
-
 .aside.simple .foreground.container .text {
     margin-bottom: 80px;
 }
@@ -126,7 +123,6 @@
 }
 
 /* Split */
-
 .aside.split {
     flex-direction: column;
 }
@@ -179,7 +175,6 @@
 }
 
 /* Augmented Image */
-
 .aside.augmented-image .foreground.container {
     justify-content: center;
     align-items: center;
@@ -194,11 +189,9 @@
 }
 
 /* Tablet */
-
 @media screen and (min-width: 600px) {
 
     /* Standard */
-
     .aside .foreground.container {
         justify-content: space-between;
         align-items: stretch;
@@ -223,7 +216,6 @@
     }
 
     /* Simple */
-
     .aside.simple .foreground.container {
         width: 100%;
     }
@@ -235,7 +227,6 @@
     }
 
     /* Split */
-
     .aside.split.large {
         flex-direction: column;
         background-color: #1E1E1E;
@@ -297,7 +288,6 @@
     }
 
     /* Augmented Image */
-
     .aside.augmented-image .background {
         clip-path: inset(19% 0);
     }
@@ -313,7 +303,6 @@
 }
 
 /* Desktop */
-
 @media screen and (min-width: 1200px) {
 
     /* Standard */
@@ -343,7 +332,6 @@
     }
 
     /* Simple */
-
     .aside.simple .foreground.container {
         width: 100%;
     }
@@ -354,7 +342,6 @@
     }
 
     /* Split */
-
     .aside.split .foreground.container .text {
         flex: 0 0 300px;
     }
@@ -370,7 +357,6 @@
     }
 
     /* Augmented Image */
-
     .aside.augmented-image {
         min-height: 700px;
     }
