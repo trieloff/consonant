@@ -122,7 +122,7 @@ export function getLibColor(str) {
 // decorate background with color lib
 export function decorateBlockBg(block, node) {
   node.classList.add('background');
-  if (!node.querySelector(':scope img')) {
+  if (!node.querySelector(':scope img') && window.colorlibrary) {
     const bgColor = getLibColor(node.textContent);
     block.style.background = bgColor;
     const darkColors = ['#323232', '#000000'];
