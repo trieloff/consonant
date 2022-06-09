@@ -10,23 +10,20 @@
  * governing permissions and limitations under the License.
  */
 
-export function decorateButtons(el) {
+export function decorateButtons(el, isLarge) {
   const buttons = el.querySelectorAll('em a, strong a');
   buttons.forEach((button) => {
     const parent = button.parentElement;
     const buttonType = parent.nodeName === 'STRONG' ? 'blue' : 'outline';
-    button.classList.add('con-button', buttonType);
+    const buttonSize = isLarge ? 'button-XL' : 'button-M';
+    button.classList.add('con-button', buttonType, buttonSize);
     parent.insertAdjacentElement('afterend', button);
     parent.remove();
   });
   if (buttons.length > 0) {
-    buttons[0].closest('p').classList.add('action-area');
-  }
-  const links = el.querySelectorAll('a:not([class])');
-  if (links) {
-    links.forEach((link) => {
-      link.classList.add('link-underline');
-    });
+    const actionArea = buttons[0].closest('p');
+    actionArea.classList.add('action-area');
+    actionArea.nextElementSibling?.classList.add('supplemental-text', 'body-XL');
   }
 }
 
@@ -36,10 +33,13 @@ export function decorateIcons(el, displayText = true) {
   placeholders?.forEach((str) => {
     if (window.iconLibrary) {
       const icon = window.iconLibrary[str];
+      const size = str.includes('persona') ? 80 : 40;
       if (icon) {
-        const svg = `<img height="40" width="40" alt="${icon[0]}" src="${icon[1]}">`;
-        const anchor = `<a class="icon ${str}" href="${icon[2]}">${svg} ${displayText ? icon[0] : ''}</a>`;
-        el.innerHTML = el.innerHTML.replace(`{{${str}}}`, anchor);
+        const svg = `<img height="${size}" width="${size}" alt="${icon.label}" src="${icon.value}">`;
+        const label = `${svg} ${displayText && icon.label ? icon.label : ''}`;
+        const anchor = `<a class="icon ${str}" href="${icon.link}">${label}</a>`;
+        const inner = `<span class="icon ${str}">${label}</span>`;
+        el.innerHTML = el.innerHTML.replace(`{{${str}}}`, icon.link ? anchor : inner);
       } else {
         el.innerHTML = el.innerHTML.replace(`{{${str}}}`, '');
       }
@@ -49,7 +49,12 @@ export function decorateIcons(el, displayText = true) {
   });
   const icons = el.querySelectorAll('.icon');
   if (icons.length > 0) {
-    icons[0].closest('p').classList.add('icon-area');
+    let areaIndex = 0;
+    if (icons[0].classList.contains('icon-persona')) {
+      icons[0].closest('p').classList.add('persona-area');
+      areaIndex = 1;
+    }
+    icons[areaIndex].closest('p').classList.add('icon-area');
   }
 }
 
@@ -112,31 +117,23 @@ export function decorateText(el, size) {
   decorateTextDaa(el, heading);
 }
 
-// check if hex or has color library value
-export function getLibColor(str) {
-  const isHex = str[0] === '#';
-  const libColor = !isHex && window.colorlibrary[str];
-  return !isHex && libColor ? libColor : str;
+export function isHexColorDark(color) {
+  if (color[0] !== '#') return false;
+  const hex = color.replace('#', '');
+  const cR = parseInt(hex.substr(0, 2), 16);
+  const cG = parseInt(hex.substr(2, 2), 16);
+  const cB = parseInt(hex.substr(4, 2), 16);
+  const brightness = ((cR * 299) + (cG * 587) + (cB * 114)) / 1000;
+  return brightness < 155;
 }
 
-// decorate background with color lib
 export function decorateBlockBg(block, node) {
   node.classList.add('background');
-  if (!node.querySelector(':scope img') && window.colorlibrary) {
-    const bgColor = getLibColor(node.textContent);
-    block.style.background = bgColor;
-    const darkColors = ['#323232', '#000000'];
-    if (darkColors.includes(bgColor)) block.classList.add('dark');
+  if (!node.querySelector(':scope img')) {
+    block.style.background = node.textContent;
+    if (isHexColorDark(node.textContent)) block.classList.add('dark');
     node.remove();
   }
-}
-
-export function decorateHeadline(header, size) {
-  const headingRow = header.parentElement;
-  headingRow.classList.add('heading-row');
-  headingRow.parentElement.classList.add('container');
-  const headerClass = (size === 'large') ? 'heading-XL' : 'heading-L';
-  header.classList.add(headerClass, 'headline');
 }
 
 export function getBlockSize(el) {

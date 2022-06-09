@@ -85,23 +85,34 @@ export function loadStyle(href, callback) {
  * fetches the string variables.
  * @returns {object} localized variables
  */
-export async function fetchLibs() {
-  if (window.colorlibrary && window.iconLibrary) return;
-  const [colorsRes, iconsRes] = await Promise.all([
-    fetch(`${window.location.origin}/docs/color-library.json`),
-    fetch(`${window.location.origin}/docs/icon-library.json`),
-  ]);
-  const colors = await colorsRes.json();
-  const icons = await iconsRes.json();
-  window.colorlibrary = {};
-  colors.data.forEach((color) => {
-    window.colorlibrary[color.key] = color.value;
-  });
-  window.iconLibrary = {};
-  icons.data.forEach((icon) => {
-    window.iconLibrary[icon.key] = [icon.value, icon.path, icon.link];
-  });
+export async function fetchLib(type) {
+  const namespace = `${type}Library`;
+  if (!type || window[namespace]) return;
+  const resp = await fetch(`${window.location.origin}/docs/${type}-library.json`);
+  if (resp.ok) {
+    try {
+      const json = await resp.json();
+      window[namespace] = {};
+      console.log('json', json);
+      json.data.forEach((item) => {
+        const itemValues = {};
+        for (const [key, value] of Object.entries(item)) {
+          if (key !== 'key') {
+            itemValues[key] = value;
+          }
+        }
+        window[namespace][item.key] = itemValues;
+      });
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.log(`Could not make ${type} library`);
+    }
+  } else {
+    // eslint-disable-next-line no-console
+    console.log(`Could not get ${type} library`);
+  }
 }
+
 
 /**
  * Retrieves the content of a metadata tag.
@@ -488,7 +499,7 @@ export function decorateMain() {
 async function loadEager() {
   setTemplate();
   decorateMain();
-  await fetchLibs();
+  await fetchLib('icon');
   await waitForLCP();
 }
 
