@@ -71,6 +71,10 @@
   margin-bottom: var(--spacing-xs);
 }
 
+.media .text .persona-area {
+  margin: 0 0 var(--spacing-xxs) 0;
+}
+
 .media .text .action-area {
   display: flex;
   margin: 0;
@@ -88,6 +92,7 @@
   align-items: center;
   color: var(--link-color);
   display: inline-flex;
+  font-size: var(--type-body-s-size);
   font-weight: 700;
   line-height: var(--type-body-l-size);
   margin: 0;
@@ -96,7 +101,7 @@
   text-transform: capitalize;
 }
 
-.text .icon:hover {
+.text a.icon:hover {
   text-decoration: underline;
   color: var(--link-hover-color);
 }
