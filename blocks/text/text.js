@@ -53,7 +53,7 @@ export default function init(el) {
   });
   decorateButtons(el);
   el.querySelectorAll('.text').forEach((col) => {
-    col.querySelector('a + a')?.closest('p').classList.add('dbl-link-wrap');
+    col.querySelector('a + a')?.closest('p').classList.add('action-area');
     decorateText(el, col.querySelector('h1, h2, h3, h4, h5, h6'));
   });
   decorateBlockDaa(el);
