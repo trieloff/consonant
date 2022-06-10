@@ -18,7 +18,7 @@ import { decorateButtons, decorateBlockBg, decorateBlockDaa, decorateText } from
 
 // decorate text content in block by passing array of classes [ detail, heading, body ]
 function decorateContent(el, classList) {
-  if (el && classList.length === 3) {
+  if (el) {
     const text = el.querySelector('h1, h2, h3, h4, h5, h6')?.closest('div');
     text?.classList.add('text');
     const headings = text.querySelectorAll('h1, h2, h3, h4, h5, h6');
