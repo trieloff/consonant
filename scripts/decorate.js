@@ -115,7 +115,7 @@ export function decorateText(el, size) {
 // check if hex or has color library value
 export function getLibColor(str) {
   const isHex = str[0] === '#';
-  const libColor = !isHex && window.colorlibrary[str];
+  const libColor = !isHex && window.colorlibrary ? window.colorlibrary[str] : str;
   return !isHex && libColor ? libColor : str;
 }
 
