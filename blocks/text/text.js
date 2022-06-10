@@ -50,27 +50,6 @@ export default function init(el) {
     decorateContent(row, ['', headingClass, 'body-M']);
     container.insertAdjacentElement('beforeend', row.children[0]);
     row.remove();
-
-    const prev = row.previousElementSibling;
-    switch (row.children.length) {
-      case 1:
-        break;
-      case 2:
-        row.classList.add('row', 'container', 'vertical', 'two-up');
-        if (prev && prev.classList.contains('full-width')) {
-          prev.classList.add('pre-up', 'pre-two-up');
-        }
-        break;
-      case 3:
-        row.classList.add('row', 'container', 'vertical', 'three-up');
-        if (prev && prev.classList.contains('full-width')) {
-          prev.classList.add('pre-up', 'pre-three-up');
-        }
-        break;
-      default:
-        // invalid number of columns, hide row
-        row.classList.add('hidden');
-    }
   });
   decorateButtons(el);
   el.querySelectorAll('.text').forEach((col) => {
