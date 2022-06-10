@@ -11,7 +11,7 @@
  */
 
 const PROJECT = 'consonant--adobecom';
-const LCP_BLOCKS = ['marquee', 'media', 'z-pattern']; // add your LCP blocks to the list
+const LCP_BLOCKS = ['marquee', 'media', 'z-pattern', 'aside']; // add your LCP blocks to the list
 
 /**
  * log RUM if part of the sample.
